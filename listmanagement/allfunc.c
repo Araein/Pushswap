@@ -7,14 +7,14 @@ struct stack1 {
 	struct stack1 *next;
 };
 typedef struct stack1 stack1_t;
-
+/*
 struct stack2 {
 
 	int value;
 	struct stack2  *next;
 };
 typedef struct stack2 stack2_t;
-
+*/
 
 
 
@@ -51,7 +51,7 @@ stack1_t *generatestack(int i)
 	int j;
 	
 	head = NULL;
-	j = 0;
+	j = 0; 
 	tmp = createnode(j);
 	while (j < i)
 	{
@@ -62,38 +62,72 @@ stack1_t *generatestack(int i)
 	}
 	return (head);
 }
+
+/*SWAP 2 FIRST ELEMENT OF LIST*/
+
+stack1_t *swapfirst(stack1_t *head)
+{
+	stack1_t *tmp;
+	stack1_t *tmp2;
+	int i;
+
+	tmp = head->next;
+	tmp2 = head;	
+	i = tmp2->value;
+    tmp2->value = tmp->value;
+	tmp->value = i;
+
+	return (head);
+
+}
+/* GIVE FIRST ELE;ENT OF A LIST TO ANOTHER ONE*/
+
+void givenode( stack1_t **head,  stack1_t **head2)
+{
+	stack1_t *tmp;
+
+	tmp = *head;
+	*head = (*head)->next;
+	tmp->next = *head2;
+	*head2 = tmp;
+}
+
+
 int main ()
 {
-/*	stack1_t *head;
-	stack1_t *tmp;
-	int i;
+	stack1_t *head;
+	stack1_t *head2;
+//	stack1_t *tmp;
+
+	head = generatestack(5);
+	head2 = swapfirst(generatestack(20));
 	
-	head = NULL;
-	i = 0;
-	tmp = createnode(i);
-	while (i < 25)
-	{
-		i++;
-		tmp = createnode(i);
-		tmp->next = head;
-		head = tmp;
-	}
+/*	printf("\n--------------- head :\n");
+	printlist(head);
+	printf("\n--------------- head2 :\n");
+	printlist(head2);
 */
-/*
 
-	n1.value = 1;
-	n2.value = 2;
-	n3.value = 3;
+	
+	givenode(&head,  &head2);
 
-	head = &n1;
-	n1.next = &n2;
-	n2.next = &n3;
-	n3.next = NULL;
-*/
-	printlist(generatestack(10));
+/*		
+	tmp = head2;
+	head2 = head2->next;
+	tmp->next = head;
+	head = tmp;
+*/	
+
+	//printlist(head2);
+	
+	printf("\n--------------- head :\n");
+	printlist(head);
+	printf("\n--------------- head2 :\n");
+	printlist(head2);
 
 
-return (0);
+
+	return (0);
 }
 
 
