@@ -1,3 +1,5 @@
+#include "Pushswap.h"
+
 void printlist (stack1_t *head)
 {
 	stack1_t *tmp;
