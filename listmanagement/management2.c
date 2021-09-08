@@ -1,3 +1,5 @@
+#include "Pushswap.h"
+
 int countelem (stack1_t *head)
 {
 	int i;
