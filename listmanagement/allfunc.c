@@ -5,19 +5,9 @@ struct stack1 {
 
 	int value;
 	struct stack1 *next;
+	struct stack1 *prev;
 };
 typedef struct stack1 stack1_t;
-/*
-struct stack2 {
-
-	int value;
-	struct stack2  *next;
-};
-typedef struct stack2 stack2_t;
-*/
-
-
-
 
 
 /* PRINT LIST*/
@@ -40,6 +30,7 @@ stack1_t *createnode (int value)
 	stack1_t *result = malloc(sizeof(stack1_t));
 	result->value = value;
 	result->next = NULL;
+	result->prev = NULL;
 	return (result);
 }
 
@@ -58,6 +49,8 @@ stack1_t *generatestack(int i)
 		j++;
 		tmp = createnode(j);
 		tmp->next = head;
+		if (j > 1)
+			head->prev = tmp;
 		head = tmp;
 	}
 	return (head);
@@ -67,64 +60,107 @@ stack1_t *generatestack(int i)
 
 stack1_t *swapfirst(stack1_t *head)
 {
-	stack1_t *tmp;
-	stack1_t *tmp2;
 	int i;
 
-	tmp = head->next;
-	tmp2 = head;	
-	i = tmp2->value;
-    tmp2->value = tmp->value;
-	tmp->value = i;
-
+	i = head->next->value;
+	head->next->value = head->value;
+	head->value = i;
 	return (head);
 
 }
-/* GIVE FIRST ELE;ENT OF A LIST TO ANOTHER ONE*/
+/* GIVE FIRST ELEMENT OF A LIST TO ANOTHER ONE*/
 
 void givenode( stack1_t **head,  stack1_t **head2)
 {
 	stack1_t *tmp;
 
 	tmp = *head;
-	*head = (*head)->next;
+	(*head)->next->prev = NULL;
+	*head = (*head)->next;    /*lignes inversees attention*/
+
+
 	tmp->next = *head2;
+	(*head2)->prev = tmp;
 	*head2 = tmp;
+
+}
+
+int countelem (stack1_t *head)
+{
+	int i;
+	
+	if (head == NULL)
+		return (0);
+	i = 1;
+	while (head->next != NULL)
+	{
+		i++;		
+		head = head->next;
+	}
+	return i;
+}
+
+void toptobottom(stack1_t **head)
+{
+	stack1_t *tmp;
+	stack1_t *tmp2;
+	
+	tmp = *head;
+	tmp2 = (*head)->next;
+	(*head)->next->prev = NULL;
+	*head = (*head)->next;
+	while ((*head)->next != NULL)
+		*head = (*head)->next;	
+	tmp->prev = *head;
+	tmp->next = NULL;
+	(*head)->next = tmp;
+	*head = tmp2;
 }
 
 
+void bottomtotop(stack1_t **head)
+{
+	stack1_t *tmp;
+	stack1_t *tmp2;
+	
+	while ((*head)->next != NULL)
+		*head = (*head)->next;
+	tmp2 = *head;
+	tmp = (*head)->prev;
+	while ((*head)->prev != NULL)
+		*head = (*head)->prev;
+	tmp->next = NULL;
+	tmp2->prev = NULL;
+	(*head)->prev = tmp2;
+	tmp2->next = *head;
+	*head = tmp2;
+}
+
+/*QTTENTION AJOUTER EXCEPTION EN CAAS DE LISTES VIDES OU QUASI VIDES*/
 int main ()
 {
 	stack1_t *head;
 	stack1_t *head2;
-//	stack1_t *tmp;
-
-	head = generatestack(5);
-	head2 = swapfirst(generatestack(20));
+	stack1_t *head3;
+	head = generatestack(10);
 	
-/*	printf("\n--------------- head :\n");
-	printlist(head);
-	printf("\n--------------- head2 :\n");
-	printlist(head2);
-*/
+	head2 = generatestack(10);
+	head3 = generatestack(10);
 
-	
-	givenode(&head,  &head2);
+	bottomtotop(&head2);
+	toptobottom(&head3);
+	givenode(&head, &head2);
 
-/*		
-	tmp = head2;
-	head2 = head2->next;
-	tmp->next = head;
-	head = tmp;
-*/	
-
-	//printlist(head2);
-	
 	printf("\n--------------- head :\n");
 	printlist(head);
-	printf("\n--------------- head2 :\n");
+//	printf("\n head a %d elem", countelem(head));
+	printf("\n--------------- head2 bottomtotop :\n");
 	printlist(head2);
+	printf("\n--------------- head3 toptobottom :\n");
+	printlist(head3);
 
+
+//	printf("\n head2 a %d elem", countelem(head2));
 
 
 	return (0);
