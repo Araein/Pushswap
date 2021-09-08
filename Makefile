@@ -1,24 +1,33 @@
-NAME 			= Pushswap.a
+NAME 			= push_swap
 
-SRCS_LIST	= management1.c management2.c main.c
+SRCS_LIST		= main.c management1.c management2.c
+
+
+FOLDER			= listmanagement
+
 
 SRCS			= $(addprefix ${FOLDER}/, ${SRCS_LIST})
 
 OBJS			= ${SRCS:.c=.o}
 
-OUT				= a.out
+
+
+
+
+
 
 HEADER			= header
-FOLDER			= listmanagement
 
 CC				= gcc
 CFLAGS 			= -Wall -Wextra -Werror
 RM				= rm -f
 
+
+
 all:			${NAME}
 
 $(NAME):		${OBJS}
-				@ar -rcs ${NAME} ${OBJS}
+				gcc -o ${NAME} ${OBJS}
 
 %.o: %.c
 				@${CC} ${CFLAGS} -I ${HEADER} -o $@ -c $<
