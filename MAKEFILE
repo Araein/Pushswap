@@ -1,6 +1,6 @@
-NAME 			= libftprintf.a
+NAME 			= Pushswap.a
 
-SRCS_LIST	= ft_printf.c atoiandco.c secondutilitaries.c secondinspect.c thirdutilitaries.c convert.c typec.c  typex.c typed.c types.c typer.c inspect.c joinandcalloc.c utilitaries.c typeu.c typep.c
+SRCS_LIST	= management1.c management2.c main.c
 
 SRCS			= $(addprefix ${FOLDER}/, ${SRCS_LIST})
 
@@ -9,7 +9,7 @@ OBJS			= ${SRCS:.c=.o}
 OUT				= a.out
 
 HEADER			= header
-FOLDER			= src
+FOLDER			= listmanagement
 
 CC				= gcc
 CFLAGS 			= -Wall -Wextra -Werror
