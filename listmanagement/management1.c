@@ -18,7 +18,6 @@ stack1_t *createnode (int value)
 	result->value = value;
 	result->next = NULL;
 	result->prev = NULL;
-	printf("\nWSHWSH\n");
 	return (result);
 }
 
@@ -29,19 +28,16 @@ stack1_t *generatestack(int argc, char **argv)
 	stack1_t *tmp;
 	int j;
 
-
 	head = NULL;
-	j = 1; 
-	
-//	tmp = createnode(ft_atoi(argv[j]));
-	while (j < argc)
+	j = argc; 
+	while (argc > 1)
 	{
-		tmp = createnode(ft_atoi(argv[j]));
+		tmp = createnode(ft_atoi(argv[argc - 1]));
 		tmp->next = head;
-		if (j > 1)
+		if (argc < j)
 			head->prev = tmp;
 		head = tmp;
-		j++;
+		argc--;
 	}
 	return (head);
 }
@@ -60,13 +56,23 @@ void givenode( stack1_t **head,  stack1_t **head2)
 {
 	stack1_t *tmp;
 
+	if (countelem (*head) == 0)
+			return ;
 	tmp = *head;
-	(*head)->next->prev = NULL;
-	*head = (*head)->next;    /*lignes inversees attention*/
-
-
-	tmp->next = *head2;
-	(*head2)->prev = tmp;
-	*head2 = tmp;
-
+	if (countelem (*head) > 1)
+		(*head)->next->prev = NULL;
+	*head = (*head)->next;
+	
+	if (*head2 == NULL)
+	{
+		*head2 = tmp;
+		(*head2)->next = NULL;
+		(*head2)->prev = NULL;
+	}
+	else
+	{	
+		tmp->next = *head2;
+		(*head2)->prev = tmp;
+		*head2 = tmp;
+	}
 }

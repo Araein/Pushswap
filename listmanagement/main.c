@@ -23,39 +23,25 @@ int		ft_atoi(const char *str)
 		num = num * 10 + (str[i] - 48);
 		i++;
 	}
-
-	printf("\nCOUCOU\n");
 	return (num * signe);
 }
 
 int main (int argc, char **argv)
 {
-	stack1_t *head;
-//	stack1_t *head2;
-//	stack1_t *head3;
+	stack1_t *heada;
+	stack1_t *headb;
 
-
-
-	head = generatestack(argc, argv);
+	headb = NULL;
+	heada = generatestack(argc, argv);
 	
-//	head2 = generatestack(10);
-//	head3 = generatestack(10);
+	givenode(&heada, &headb);
+	givenode(&headb, &heada);
 
-//	bottomtotop(&head2);
-//	toptobottom(&head3);
-//	givenode(&head, &head2);
-//	printf("\n%d -- %d\n", argc, ft_atoi(argv[1]));
-	printf("\n--------------- head :\n");
-	printlist(head);
-//	printf("\n head a %d elem", countelem(head));
-/*	printf("\n--------------- head2 bottomtotop :\n");
-	printlist(head2);
-	printf("\n--------------- head3 toptobottom :\n");
-	printlist(head3);
-*/
+	printf("\n--------------- heada :\n");
+	printlist(heada);
 
-//	printf("\n head2 a %d elem", countelem(head2));
-
+	printf("\n--------------- headb :\n");
+	printlist(headb);
 
 	return (0);
 }
