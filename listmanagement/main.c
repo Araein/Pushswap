@@ -25,6 +25,22 @@ int		ft_atoi(const char *str)
 	}
 	return (num * signe);
 }
+/*
+void triplechar(stack1_t **head)
+{
+	if ((*head)->value < (*head)->next->value)
+	{
+		if ((*head)->next->value < (*head)->next->next->value)
+			return ;
+		if ((*head)->value > (*head)->next->next->value)
+		{
+			bottomtotop(head);
+			return ;
+		} else
+		swapfirst(*head);
+		toptobottom(head);
+	}
+}*/
 
 int main (int argc, char **argv)
 {
@@ -34,14 +50,19 @@ int main (int argc, char **argv)
 	headb = NULL;
 	heada = generatestack(argc, argv);
 	
-	givenode(&heada, &headb);
-	givenode(&headb, &heada);
-
-	printf("\n--------------- heada :\n");
+	printf("\n--------------- heada before :\n");
 	printlist(heada);
 
-	printf("\n--------------- headb :\n");
-	printlist(headb);
+	if (countelem(heada) == 3)
+		triplechar(&heada);
+//	givenode(&heada, &headb);
+//	givenode(&headb, &heada);
+
+	printf("\n--------------- heada after :\n");
+	printlist(heada);
+
+//	printf("\n--------------- headb :\n");
+//	printlist(headb);
 
 	return (0);
 }

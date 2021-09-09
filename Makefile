@@ -1,28 +1,18 @@
 NAME 			= push_swap
 
-SRCS_LIST		= main.c management1.c management2.c
-
+SRCS_LIST		= main.c management1.c management2.c dealwith3.c
 
 FOLDER			= listmanagement
-
 
 SRCS			= $(addprefix ${FOLDER}/, ${SRCS_LIST})
 
 OBJS			= ${SRCS:.c=.o}
-
-
-
-
-
-
 
 HEADER			= header
 
 CC				= gcc
 CFLAGS 			= -Wall -Wextra -Werror
 RM				= rm -f
-
-
 
 all:			${NAME}
 
