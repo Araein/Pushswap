@@ -16,11 +16,15 @@ typedef struct	stack1
 
 void printlist (stack1_t *head);
 stack1_t *createnode (int value);
-stack1_t *generatestack(int i);
+stack1_t *generatestack(int argc, char **argv);
 stack1_t *swapfirst(stack1_t *head);
 void givenode( stack1_t **head,  stack1_t **head2);
 int countelem (stack1_t *head);
 void toptobottom(stack1_t **head);
 void bottomtotop(stack1_t **head);
+
+int ft_atoi(const char *str);
+
+
 
 #endif
