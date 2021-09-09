@@ -30,6 +30,7 @@ void toptobottom(stack1_t **head)
 	tmp->next = NULL;
 	(*head)->next = tmp;
 	*head = tmp2;
+	printf("\no");
 }
 
 void bottomtotop(stack1_t **head)
@@ -48,4 +49,5 @@ void bottomtotop(stack1_t **head)
 	(*head)->prev = tmp2;
 	tmp2->next = *head;
 	*head = tmp2;
+	printf("\no");
 }

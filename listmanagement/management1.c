@@ -48,7 +48,9 @@ stack1_t *swapfirst(stack1_t *head)
 	i = head->next->value;
 	head->next->value = head->value;
 	head->value = i;
-	return (head);
+		printf("\no");
+
+return (head);
 
 }
 
@@ -75,4 +77,8 @@ void givenode( stack1_t **head,  stack1_t **head2)
 		(*head2)->prev = tmp;
 		*head2 = tmp;
 	}
+	
+	printf("\no");
+
+
 }

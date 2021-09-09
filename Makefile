@@ -1,6 +1,6 @@
 NAME 			= push_swap
 
-SRCS_LIST		= main.c management1.c management2.c dealwith3.c
+SRCS_LIST		= main.c management1.c management2.c dealwith3.c dealwith5.c
 
 FOLDER			= listmanagement
 

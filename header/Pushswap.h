@@ -27,7 +27,7 @@ void triplechar(stack1_t **head);
 void firsttinier (stack1_t **head);
 void firstbigger (stack1_t **head);
 int ft_atoi(const char *str);
-int adi (int a);
+void fivechar(stack1_t **head, stack1_t **head2, int size);
 
 
 

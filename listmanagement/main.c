@@ -25,22 +25,6 @@ int		ft_atoi(const char *str)
 	}
 	return (num * signe);
 }
-/*
-void triplechar(stack1_t **head)
-{
-	if ((*head)->value < (*head)->next->value)
-	{
-		if ((*head)->next->value < (*head)->next->next->value)
-			return ;
-		if ((*head)->value > (*head)->next->next->value)
-		{
-			bottomtotop(head);
-			return ;
-		} else
-		swapfirst(*head);
-		toptobottom(head);
-	}
-}*/
 
 int main (int argc, char **argv)
 {
@@ -55,14 +39,16 @@ int main (int argc, char **argv)
 
 	if (countelem(heada) == 3)
 		triplechar(&heada);
-//	givenode(&heada, &headb);
-//	givenode(&headb, &heada);
+	else if (countelem(heada) < 6)
+	   fivechar(&heada, &headb, countelem(heada));	
+
+
 
 	printf("\n--------------- heada after :\n");
 	printlist(heada);
 
-//	printf("\n--------------- headb :\n");
-//	printlist(headb);
+	printf("\n--------------- headb :\n");
+	printlist(headb);
 
 	return (0);
 }
