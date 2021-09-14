@@ -36,7 +36,7 @@ int	sortstack( stack1_t **head, t_stack *stack)
     }
 	*head = keep;
 	stack->sorted = *head;
-//	printlist(*head);
+	printlist(*head);
 
 	return (1);
 }
@@ -48,6 +48,8 @@ void	findmedian (t_stack *stack)
 	
 	i = 0;
 	tmp = stack->sorted;
+//	if (stack->size % 2 != 0)
+		
 	while (i < stack->size / 2)
 	{
 		tmp = tmp->next;
@@ -191,11 +193,18 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	stack1_t	*tmp;
 	int			i;
 	int			choose;
+	int			test;
 
+	test = 0;
 	/*push everything below the median into stack b. */
 	i = 0;
 	tmp = *heada;
-	while ((*heada)->next != NULL && i < stack->size / 2)
+	printf("\n sizetotale = %d", stack->size);
+	if(stack->size % 2 != 0)
+		test++;
+
+
+	while (/*(*heada)->next != NULL &&*/ i < stack->size/2 + test)  /*quand nombre impair ca casse les couilles*/
 	{
 		if ((*heada)->value <= stack->median)
 		{
@@ -210,7 +219,7 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	{
 		
 		printf ("\n///////////b////////////\n");
-		printlist(*headb);
+	//	printlist(*headb);
 	
 		findhigherlower(headb, stack);
 
@@ -221,5 +230,4 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 		//diminuer i?
 	}
 	givenode(headb, heada, 0);
-
 }
