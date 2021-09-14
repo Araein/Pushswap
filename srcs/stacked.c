@@ -224,7 +224,48 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 		findhigherlower(headb, stack);
 
 		choose = decidewhofirst(headb, stack, i); //direction  2 = rrb 1 = rb
-		printf("\n\nchoose = %d || direction = %d\n\n", choose, stack->direction);
+//		printf("\n\nchoose = %d || direction = %d\n\n", choose, stack->direction);
+		flipit(headb, heada, stack, choose);
+		i--;
+		//diminuer i?
+	}
+	givenode(headb, heada, 0);
+
+
+
+
+
+/////////////////////////////////////////////////////
+
+
+
+
+		test =0;
+		i = 0;
+//		if(stack->size % 2 != 0)
+//			test++;
+	while (/*(*heada)->next != NULL &&*/ i < stack->size/2)
+	{
+		if ((*heada)->value > stack->median)
+		{
+			givenode(heada, headb, 1);
+			i++;
+		} else 
+		toptobottom(heada, 0);
+	}
+			
+//	printf ("\n///////////b////////////\n");
+//	printlist(*headb);
+	while ((*headb)->next != NULL)
+	{
+		
+		printf ("\n///////////b////////////\n");
+	//	printlist(*headb);
+	
+		findhigherlower(headb, stack);
+
+		choose = decidewhofirst(headb, stack, i); //direction  2 = rrb 1 = rb
+//		printf("\n\nchoose = %d || direction = %d\n\n", choose, stack->direction);
 		flipit(headb, heada, stack, choose);
 		i--;
 		//diminuer i?
