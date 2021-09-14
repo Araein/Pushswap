@@ -18,7 +18,10 @@ typedef struct  s_stack
 {
 	int			size;
 	int			median;
+	int			direction;
 	stack1_t	*sorted;
+	stack1_t	*higher;
+	stack1_t	*lower;
 }				t_stack;
 
 
@@ -40,5 +43,8 @@ void fivechar(stack1_t **head, stack1_t **head2, int size);
 void stacked(stack1_t **head, stack1_t **head2, t_stack *stack);
 int  sortstack (stack1_t **head, t_stack *stack); 
 void findmedian (t_stack *stack);
+void	findhigherlower (stack1_t **head, t_stack *stack);
+int		decidewhofirst (stack1_t **head, t_stack *stack, int i);
+void	flipit (stack1_t **headb, stack1_t **heada, t_stack *stack, int choose);
 
 #endif

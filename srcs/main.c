@@ -30,11 +30,14 @@ int main (int argc, char **argv)
 {
 	stack1_t	*heada;
 	stack1_t	*headb;
+	stack1_t	*sorted;
 	t_stack		stack;
-	
+
+	/*checker si cest aue des int, si ya pa de double si cest pas vide */
 
 	headb = NULL;
 	heada = generatestack(argc, argv);
+	sorted = generatestack(argc, argv);
 	stack.size = countelem(heada);
 
 
@@ -43,7 +46,7 @@ int main (int argc, char **argv)
 	printlist(heada);
 
 	printf("\n//////////////\n");
-	sortstack(&heada, &stack);
+	sortstack(&sorted, &stack);
 	findmedian(&stack);
 	printf("\n la mediane est : %d\n", stack.median);
 	
