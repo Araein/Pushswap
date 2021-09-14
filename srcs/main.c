@@ -30,33 +30,35 @@ int main (int argc, char **argv)
 {
 	stack1_t	*heada;
 	stack1_t	*headb;
-	int			elemhead;
+	t_stack		stack;
+	
 
 	headb = NULL;
 	heada = generatestack(argc, argv);
-	elemhead = countelem(heada);
+	stack.size = countelem(heada);
 
 
 
 	printf("\n--------------- heada before :\n");
 	printlist(heada);
 
-//	findmedian(&heada, elemhead);
 	printf("\n//////////////\n");
-	findmedian(&heada, elemhead);
-	/*
-	if (elemhead == 3)
+	sortstack(&heada, &stack);
+	findmedian(&stack);
+	printf("\n la mediane est : %d\n", stack.median);
+	
+	if (stack.size == 3)
 		triplechar(&heada);
-	else if (elemhead < 6)
-	   fivechar(&heada, &headb, elemhead);	
-	else if (elemhead < 101)
-		stacked(&heada, &headb, elemhead);
+	else if (stack.size < 6)
+	   fivechar(&heada, &headb, stack.size);	
+	else if (stack.size < 101)
+		stacked(&heada, &headb, &stack);
 
 	printf("\n--------------- heada after :\n");
 	printlist(heada);
 
 	printf("\n--------------- headb :\n");
 	printlist(headb);
-*/
+
 	return (0);
 }

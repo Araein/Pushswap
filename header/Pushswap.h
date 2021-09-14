@@ -14,6 +14,14 @@ typedef struct	stack1
 	struct stack1 *prev;
 }				stack1_t;
 
+typedef struct  s_stack
+{
+	int			size;
+	int			median;
+	stack1_t	*sorted;
+}				t_stack;
+
+
 /*ajouter structure avec nombre d'actions effectuees et taille de liste?*/
 void printlist (stack1_t *head);
 stack1_t *createnode (int value);
@@ -28,8 +36,9 @@ void firsttinier (stack1_t **head);
 void firstbigger (stack1_t **head);
 int ft_atoi(const char *str);
 void fivechar(stack1_t **head, stack1_t **head2, int size);
-void stacked(stack1_t **head, stack1_t **head2, int size);
-int  findmedian (stack1_t **head, int size); 
 
+void stacked(stack1_t **head, stack1_t **head2, t_stack *stack);
+int  sortstack (stack1_t **head, t_stack *stack); 
+void findmedian (t_stack *stack);
 
 #endif
