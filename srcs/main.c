@@ -28,27 +28,35 @@ int		ft_atoi(const char *str)
 
 int main (int argc, char **argv)
 {
-	stack1_t *heada;
-	stack1_t *headb;
+	stack1_t	*heada;
+	stack1_t	*headb;
+	int			elemhead;
 
 	headb = NULL;
 	heada = generatestack(argc, argv);
-	
+	elemhead = countelem(heada);
+
+
+
 	printf("\n--------------- heada before :\n");
 	printlist(heada);
 
-	if (countelem(heada) == 3)
+//	findmedian(&heada, elemhead);
+	printf("\n//////////////\n");
+	findmedian(&heada, elemhead);
+	/*
+	if (elemhead == 3)
 		triplechar(&heada);
-	else if (countelem(heada) < 6)
-	   fivechar(&heada, &headb, countelem(heada));	
-
-
+	else if (elemhead < 6)
+	   fivechar(&heada, &headb, elemhead);	
+	else if (elemhead < 101)
+		stacked(&heada, &headb, elemhead);
 
 	printf("\n--------------- heada after :\n");
 	printlist(heada);
 
 	printf("\n--------------- headb :\n");
 	printlist(headb);
-
+*/
 	return (0);
 }

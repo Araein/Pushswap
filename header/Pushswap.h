@@ -28,7 +28,8 @@ void firsttinier (stack1_t **head);
 void firstbigger (stack1_t **head);
 int ft_atoi(const char *str);
 void fivechar(stack1_t **head, stack1_t **head2, int size);
-
+void stacked(stack1_t **head, stack1_t **head2, int size);
+int  findmedian (stack1_t **head, int size); 
 
 
 #endif
