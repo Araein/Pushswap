@@ -1,5 +1,6 @@
 #include "Pushswap.h"
 
+
 int		ft_atoi(const char *str)
 {
 	int signe;
@@ -43,13 +44,14 @@ int main (int argc, char **argv)
 
 
 	stack.operation = 0;
-	printf("\n--------------- heada before :\n");
-	printlist(heada);
 
-	printf("\n//////////////\n");
+//	printf("\n--------------- heada before :\n");
+//	printlist(heada);
+
+//	printf("\n//////////////\n");
 	sortstack(&sorted, &stack);
 	findmedian(&stack);
-	printf("\n la mediane est : %d\n", stack.median);
+//	printf("\n la mediane est : %d\n", stack.median);
 	
 	if (stack.size == 3)
 		triplechar(&heada, &stack);
@@ -64,5 +66,6 @@ int main (int argc, char **argv)
 	printf("\n--------------- headb :\n");
 	printlist(headb);
 	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
+	freelist(heada);
 	return (0);
 }

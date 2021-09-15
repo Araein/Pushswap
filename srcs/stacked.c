@@ -36,32 +36,47 @@ int	sortstack( stack1_t **head, t_stack *stack)
     }
 	*head = keep;
 	stack->sorted = *head;
-	printlist(*head);
+	//printlist(*head);
 
 	return (1);
 }
+
 
 void	findmedian (t_stack *stack)
 {
 	stack1_t	*tmp;
 	int			i;
-	
+	int			p;
+
+	p = stack->size / 4;
 	i = 0;
 	tmp = stack->sorted;
-//	if (stack->size % 2 != 0)
-		
-	while (i < stack->size / 2)
+/*
+	while (i < p)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	stack->firstquart = tmp->value;
+	i = 0;
+*/	while (i < stack->size/2)
 	{
 		tmp = tmp->next;
 		i++;
 	}
 	stack->median = tmp->value;
+/*	i = 0;
+	while (i < p)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	stack->thirdquart = tmp->value;
+*/
+	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack->firstquart, stack->median, stack->thirdquart, stack->operation);
+	freelist(stack->sorted);
 }
 
-
-/* tant aue moitie de size pas atteint, tout ce aui est < median go to ->b  le reste swap vers le bas de a*/
-
-/*TRIER TEMPOSORT ET VOIR LA VALEUR MEDIANE*/
 
 
 void	findhigherlower (stack1_t **head, t_stack *stack)
@@ -70,9 +85,6 @@ void	findhigherlower (stack1_t **head, t_stack *stack)
 	stack1_t	*lower;
 	stack1_t	*tmp;
 
-
-	//i = nombre d'elements dans b
-	/*trouve le nombre le plus petit et le plus grand dans b*/
 	tmp = *head;
 	higher = *head;
 	lower = *head;
@@ -94,22 +106,13 @@ int		decidewhofirst(stack1_t **head, t_stack *stack, int i)
 	stack1_t	*tmp;
 	int			middle;
 	int			j;
-	int			k;
-	int			jtemp;
-	int			ktemp;
 	int			ret;
 	
-//	i = countelem(*head);
 	middle = i/2;
 	j = 0;
-	k = 0;
 	tmp = *head;
 
-//	jtemp = j;
-	ktemp = k;
-
 	stack->direction = 1;
-//	printf("\n***lower = %d_ j = %d / head value = %d***\n", stack->lower->value, j, (*head)->value);
 	while (stack->lower->value != (*head)->value)
 	{
 		j++;
@@ -117,56 +120,21 @@ int		decidewhofirst(stack1_t **head, t_stack *stack, int i)
 	}
 	*head = tmp;
 
-	printf("\n***lower = %d_ j = %d***\n", stack->lower->value, j);
-	jtemp = j;
-	/*	while (stack->higher->value != (*head)->value)
-	{
-		k++;
-		*head = (*head)->next;
-	}
-	*head = tmp;
-*/	     
-//	printf("\nCOUCOU\n");                                                          
+//	printf("\n***lower = %d_ j = %d***\n", stack->lower->value, j);
+                                                          
 	if (j > middle)
 	{
 		j = i - j;
 		stack->direction = 2;
 	}
-		/*	if (k > middle)
-		k = k - middle;
-	if (j < k)
-	{
-*/	//	if (jtemp >= middle)
-	//	{
-	//		stack->direction = 2;
-	//		j--;
-	//	}
-			
 		ret = j;
-//		if (stack->direction == 2)
-//			ret--;
-//		if ( ret < 0)
-//			ret = 0;
-
-		
-		/*	}
-	else
-	{
-		if (ktemp > middle)
-			stack->direction = 2;
-		ret = k;
-	}
-*/
-		printf("ret = %d\n", ret);
-		return (ret);    /*trie qui sera le prochain elem a etre flip*/
-	
+		return (ret);
 }
 
 void	flipit( stack1_t **headb, stack1_t **heada, t_stack *stack, int choose)
 {
 	int i;
-	
-//	printf("\nCOUCOU\n");
+
 	i = 0;
 	if (stack->direction == 1)
 	{
@@ -187,6 +155,35 @@ void	flipit( stack1_t **headb, stack1_t **heada, t_stack *stack, int choose)
 	givenode( headb, heada, 0, stack);
 }
 
+void	stackedbis(stack1_t **heada, stack1_t **headb, t_stack *stack)
+{
+	int i;
+	int choose;
+	int test;
+
+	test = 0;
+	i = 0;
+//	if(stack->size % 2 != 0)
+//			test++;
+	while (i < stack->size/2)
+	{
+		if ((*heada)->value > stack->median)
+		{
+			givenode(heada, headb, 1, stack);
+			i++;
+		} else 
+		toptobottom(heada, 0, stack);
+//		printf("coucou");
+	}
+	while ((*headb)->next != NULL)
+	{	
+		findhigherlower(headb, stack);
+		choose = decidewhofirst(headb, stack, i);
+		flipit(headb, heada, stack, choose);
+		i--;
+	}
+	givenode(headb, heada, 0, stack);
+}
 
 void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 {
@@ -196,15 +193,15 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	int			test;
 
 	test = 0;
-	/*push everything below the median into stack b. */
 	i = 0;
 	tmp = *heada;
-	printf("\n sizetotale = %d", stack->size);
+	choose = stack->size;
+	tmp = *headb;
+	choose = 0;
+	
 	if(stack->size % 2 != 0)
 		test++;
-
-
-	while (/*(*heada)->next != NULL &&*/ i < stack->size/2 + test)  /*quand nombre impair ca casse les couilles*/
+	while (i < stack->size/2 + test)
 	{
 		if ((*heada)->value <= stack->median)
 		{
@@ -212,63 +209,16 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 			i++;
 		} else 
 		toptobottom(heada, 0, stack);
+	//	printf("coucou");
 	}
-//	printf ("\n///////////b////////////\n");
-//	printlist(*headb);
 	while ((*headb)->next != NULL)
 	{
-		
-		printf ("\n///////////b////////////\n");
-	//	printlist(*headb);
-	
 		findhigherlower(headb, stack);
 
-		choose = decidewhofirst(headb, stack, i); //direction  2 = rrb 1 = rb
-//		printf("\n\nchoose = %d || direction = %d\n\n", choose, stack->direction);
+		choose = decidewhofirst(headb, stack, i);
 		flipit(headb, heada, stack, choose);
 		i--;
-		//diminuer i?
 	}
 	givenode(headb, heada, 0, stack);
-
-
-
-
-
-/////////////////////////////////////////////////////
-
-
-
-
-		test =0;
-		i = 0;
-//		if(stack->size % 2 != 0)
-//			test++;
-	while (/*(*heada)->next != NULL &&*/ i < stack->size/2)
-	{
-		if ((*heada)->value > stack->median)
-		{
-			givenode(heada, headb, 1, stack);
-			i++;
-		} else 
-		toptobottom(heada, 0, stack);
-	}
-			
-//	printf ("\n///////////b////////////\n");
-//	printlist(*headb);
-	while ((*headb)->next != NULL)
-	{
-		
-		printf ("\n///////////b////////////\n");
-	//	printlist(*headb);
-	
-		findhigherlower(headb, stack);
-
-		choose = decidewhofirst(headb, stack, i); //direction  2 = rrb 1 = rb
-//		printf("\n\nchoose = %d || direction = %d\n\n", choose, stack->direction);
-		flipit(headb, heada, stack, choose);
-		i--;
-		//diminuer i?
-	}
-	givenode(headb, heada, 0, stack);
+	stackedbis(heada, headb, stack);
 }

@@ -1,5 +1,18 @@
 #include "Pushswap.h"
 
+
+void	freelist(stack1_t *head)
+{
+   stack1_t *tmp;
+
+   while (head != NULL)
+    {
+       tmp = head;
+       head = head->next;
+       free(tmp);
+    }
+}
+
 void printlist (stack1_t *head)
 {
 	stack1_t *tmp;

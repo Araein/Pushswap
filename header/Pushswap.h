@@ -18,6 +18,8 @@ typedef struct  s_stack
 {
 	int			size;
 	int			median;
+	int			firstquart;
+	int			thirdquart;
 	int			direction;
 	int			operation;
 	stack1_t	*sorted;
@@ -47,5 +49,8 @@ void findmedian (t_stack *stack);
 void	findhigherlower (stack1_t **head, t_stack *stack);
 int		decidewhofirst (stack1_t **head, t_stack *stack, int i);
 void	flipit (stack1_t **headb, stack1_t **heada, t_stack *stack, int choose);
+
+void	stackedbis(stack1_t **heada, stack1_t **headb, t_stack *stack);
+void	freelist(stack1_t *head);
 
 #endif
