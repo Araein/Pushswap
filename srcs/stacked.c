@@ -36,11 +36,9 @@ int	sortstack( stack1_t **head, t_stack *stack)
     }
 	*head = keep;
 	stack->sorted = *head;
-	//printlist(*head);
 
 	return (1);
 }
-
 
 void	findmedian (t_stack *stack)
 {
@@ -77,10 +75,6 @@ void	findmedian (t_stack *stack)
 	}
 	stack->thirdquart = tmp->value;
 
-
-
-
-//	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack->firstquart, stack->median, stack->thirdquart, stack->operation);
 	freelist(stack->sorted);
 }
 
@@ -97,7 +91,7 @@ void	findhigherlower (stack1_t **head, t_stack *stack)
 	{
 	//	if ((*head)->value > higher->value)
 	//		higher = *head;
-		if ((*head)->value < lower->value)
+		if ((*head)->value > lower->value)
 			lower = *head;
 		*head = (*head)->next;
 	}
@@ -168,20 +162,20 @@ void	stackedbis(stack1_t **heada, stack1_t **headb, t_stack *stack)
 
 	test = 0;
 	i = 0;
-//	if(stack->size % 2 != 0)
-//			test++;
-	while (i < stack->size/2)
+	if(stack->size % 2 != 0)
+			test++;
+	while (i < stack->size/2 + test)
 	{
-		if ((*heada)->value > stack->median)
+		if ((*heada)->value <= stack->median)
 		{
 			givenode(heada, headb, 1, stack);
 			i++;
-		} else 
-		toptobottom(heada, 0, stack);
-//		printf("coucou");
+		} else
+	toptobottom(heada, 0, stack);
+	printf("coucou i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
 	}
 	while ((*headb)->next != NULL)
-	{	
+	{
 		findhigherlower(headb, stack);
 		choose = decidewhofirst(headb, stack, i);
 		flipit(headb, heada, stack, choose);
@@ -204,11 +198,11 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	tmp = *headb;
 	choose = 0;
 	
-	if(stack->size % 2 != 0)
+	//if(stack->size % 2 != 0)
 		test++;
 	while (i < stack->size/2 + test)
 	{
-		if ((*heada)->value <= stack->median)
+		if ((*heada)->value >= stack->median)
 		{
 			givenode(heada, headb, 1, stack);
 			i++;
