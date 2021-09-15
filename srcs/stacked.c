@@ -173,7 +173,7 @@ void	flipit( stack1_t **headb, stack1_t **heada, t_stack *stack, int choose)
 		while ( i < choose)
 		{
 			i++;
-			toptobottom (headb, 1);
+			toptobottom (headb, 1, stack);
 		}
 	}
 	if (stack->direction == 2)
@@ -181,10 +181,10 @@ void	flipit( stack1_t **headb, stack1_t **heada, t_stack *stack, int choose)
 		while ( i < choose)
 		{
 			i++;
-			bottomtotop (headb, 1);
+			bottomtotop (headb, 1, stack);
 		}
 	}
-	givenode( headb, heada, 0);
+	givenode( headb, heada, 0, stack);
 }
 
 
@@ -208,10 +208,10 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	{
 		if ((*heada)->value <= stack->median)
 		{
-			givenode(heada, headb, 1);
+			givenode(heada, headb, 1, stack);
 			i++;
 		} else 
-		toptobottom(heada, 0);
+		toptobottom(heada, 0, stack);
 	}
 //	printf ("\n///////////b////////////\n");
 //	printlist(*headb);
@@ -229,7 +229,7 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 		i--;
 		//diminuer i?
 	}
-	givenode(headb, heada, 0);
+	givenode(headb, heada, 0, stack);
 
 
 
@@ -248,10 +248,10 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	{
 		if ((*heada)->value > stack->median)
 		{
-			givenode(heada, headb, 1);
+			givenode(heada, headb, 1, stack);
 			i++;
 		} else 
-		toptobottom(heada, 0);
+		toptobottom(heada, 0, stack);
 	}
 			
 //	printf ("\n///////////b////////////\n");
@@ -270,5 +270,5 @@ void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 		i--;
 		//diminuer i?
 	}
-	givenode(headb, heada, 0);
+	givenode(headb, heada, 0, stack);
 }

@@ -34,14 +34,15 @@ int main (int argc, char **argv)
 	t_stack		stack;
 
 	/*checker si cest aue des int, si ya pa de double si cest pas vide */
-
+	/*segfault sur 2 chara*/
+	/*boucle infinie sur 5 2 4 8 6 4 -9 1*/
 	headb = NULL;
 	heada = generatestack(argc, argv);
 	sorted = generatestack(argc, argv);
 	stack.size = countelem(heada);
 
 
-
+	stack.operation = 0;
 	printf("\n--------------- heada before :\n");
 	printlist(heada);
 
@@ -51,10 +52,10 @@ int main (int argc, char **argv)
 	printf("\n la mediane est : %d\n", stack.median);
 	
 	if (stack.size == 3)
-		triplechar(&heada);
+		triplechar(&heada, &stack);
 	else if (stack.size < 6)
-	   fivechar(&heada, &headb, stack.size);	
-	else if (stack.size < 101)
+	   fivechar(&heada, &headb, stack.size, &stack);	
+	else if (stack.size < 1000)
 		stacked(&heada, &headb, &stack);
 
 	printf("\n--------------- heada after :\n");
@@ -62,6 +63,6 @@ int main (int argc, char **argv)
 
 	printf("\n--------------- headb :\n");
 	printlist(headb);
-
+	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
 	return (0);
 }

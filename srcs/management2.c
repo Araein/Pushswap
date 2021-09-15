@@ -15,7 +15,7 @@ int countelem (stack1_t *head)
 	return i;
 }
 
-void toptobottom(stack1_t **head, int boo)
+void toptobottom(stack1_t **head, int boo, t_stack *stack)
 {
 	stack1_t *tmp;
 	stack1_t *tmp2;
@@ -36,9 +36,10 @@ void toptobottom(stack1_t **head, int boo)
 		printf("\nrr");
 	else
 		printf("\nra");
+	stack->operation += 1;
 }
 
-void bottomtotop(stack1_t **head, int boo)
+void bottomtotop(stack1_t **head, int boo, t_stack *stack)
 {
 	stack1_t *tmp;
 	stack1_t *tmp2;
@@ -60,4 +61,5 @@ void bottomtotop(stack1_t **head, int boo)
 		printf("\nrrr");
 	else
 		printf("\nrra");
+	stack->operation += 1;
 }

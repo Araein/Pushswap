@@ -41,7 +41,7 @@ stack1_t *generatestack(int argc, char **argv)
 	}
 	return (head);
 }
-stack1_t *swapfirst(stack1_t *head, int boo)
+stack1_t *swapfirst(stack1_t *head, int boo, t_stack *stack)
 {
 	int i;
 
@@ -54,12 +54,12 @@ stack1_t *swapfirst(stack1_t *head, int boo)
 		printf("\nss");
 	else
 		printf("\nsa");
-
-return (head);
+	stack->operation += 1;
+	return (head);
 
 }
 
-void givenode( stack1_t **head,  stack1_t **head2, int boo)
+void givenode( stack1_t **head,  stack1_t **head2, int boo, t_stack *stack)
 {
 	stack1_t *tmp;
 
@@ -86,4 +86,5 @@ void givenode( stack1_t **head,  stack1_t **head2, int boo)
 		printf("\npb");
 	else
 		printf("\npa");
+	stack->operation += 1;
 }
