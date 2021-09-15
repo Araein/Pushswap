@@ -80,7 +80,7 @@ void	findmedian (t_stack *stack)
 
 
 
-	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack->firstquart, stack->median, stack->thirdquart, stack->operation);
+//	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack->firstquart, stack->median, stack->thirdquart, stack->operation);
 	freelist(stack->sorted);
 }
 

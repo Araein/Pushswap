@@ -66,6 +66,7 @@ int main (int argc, char **argv)
 	printf("\n--------------- headb :\n");
 	printlist(headb);
 	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
+	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack.firstquart, stack.median, stack.thirdquart, stack.operation);
 	freelist(heada);
 	return (0);
 }
