@@ -46,38 +46,43 @@ void	findmedian (t_stack *stack)
 {
 	stack1_t	*tmp;
 	int			i;
-	int			p;
 
-	p = stack->size / 4;
 	i = 0;
 	tmp = stack->sorted;
-/*
-	while (i < p)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	stack->firstquart = tmp->value;
-	i = 0;
-*/	while (i < stack->size/2)
+	
+	while (i < stack->size/2)
 	{
 		tmp = tmp->next;
 		i++;
 	}
 	stack->median = tmp->value;
-/*	i = 0;
-	while (i < p)
+
+	i = 0;
+	tmp = stack->sorted;
+	
+	while (i < stack->size/4)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	stack->firstquart = tmp->value;
+
+	i = 0;
+	tmp = stack->sorted;
+	
+	while (i < stack->size - stack->size/4)
 	{
 		tmp = tmp->next;
 		i++;
 	}
 	stack->thirdquart = tmp->value;
-*/
+
+
+
+
 	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack->firstquart, stack->median, stack->thirdquart, stack->operation);
 	freelist(stack->sorted);
 }
-
-
 
 void	findhigherlower (stack1_t **head, t_stack *stack)
 {
