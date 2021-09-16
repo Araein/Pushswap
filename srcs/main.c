@@ -50,18 +50,25 @@ int main (int argc, char **argv)
 //	printlist(heada);
 
 //	printf("\n//////////////\n");
-	sortstack(&sorted, &stack);
-	findmedian(&stack);
-//	printf("\n la mediane est : %d\n", stack.median);
-	
+//	sortstack(&sorted, &stack);
+//	findmedian(&stack);
+//	printf("\n la size est : %d\n", stack.size);
+//	GERER DOUBLONS ///// NOMBRE UNIQUE ///// DUO DE NOMBRE
 	if (stack.size == 3)
 		triplechar(&heada, &stack);
 	else if (stack.size < 6)
 	   fivechar(&heada, &headb, stack.size, &stack);	
-	else if (stack.size < 101)
-		stacked(&heada, &headb, &stack);
 	else
-		bigstack(&heada, &headb, &stack);
+	{		
+		sortstack(&sorted, &stack);
+		findmedian(&stack);
+		if (stack.size < 101)
+			stacked(&heada, &headb, &stack);
+		else
+			bigstack(&heada, &headb, &stack);
+	}
+
+
 
 /*	printf("\n--------------- heada after :\n");
 	printlist(heada);
@@ -70,6 +77,7 @@ int main (int argc, char **argv)
 	printlist(headb);
 	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
 	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack.firstquart, stack.median, stack.thirdquart, stack.operation);
-*/	freelist(heada);
+*/	
+	freelist(heada);
 	return (0);
 }

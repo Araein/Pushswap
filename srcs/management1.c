@@ -71,8 +71,8 @@ stack1_t *generatestack(int argc, char **argv)
 			head->prev = tmp;
 		head = tmp;
 		argc--;
-	}*/
-	return (head);
+	}
+*/	return (head);
 }
 stack1_t *swapfirst(stack1_t *head, int boo, t_stack *stack)
 {
