@@ -9,9 +9,11 @@ void	bigstack4(stack1_t **heada, stack1_t **headb, t_stack *stack)
 
 	test = 0;
 	i = 0;
-//	if(stack->size % 2 != 0)
-//			test++;
-	while (i <= stack->keep)
+//	if(stack->size % 4 < 3)
+			test++;
+//	else
+//		test--;
+	while (i < stack->keep + test)
 	{
 		if ((*heada)->value <= stack->thirdquart)
 		{
@@ -41,8 +43,10 @@ void	bigstack3(stack1_t **heada, stack1_t **headb, t_stack *stack)
 
 	test = 0;
 	i = 0;
-//	if(stack->size % 2 != 0)
-	//		test++;
+	if(stack->size % 4 == 1 || stack->size % 4 == 2 || stack->size % 4 == 3)
+			test++;
+	if(stack->size % 4 == 3)
+		test++;
 	while (i < stack->size/4 + test)
 	{
 		if ((*heada)->value >= stack->thirdquart && (*heada)->value < stack->median)
@@ -72,8 +76,8 @@ void	bigstack2(stack1_t **heada, stack1_t **headb, t_stack *stack)
 
 	test = 0;
 	i = 0;
-//	if(stack->size % 2 != 0)
-//			test++;
+	if(stack->size % 4 >= 2 )
+			test++;
 	while (i < stack->size/4 + test)
 	{
 		if ((*heada)->value >= stack->median && (*heada)->value < stack->firstquart)
