@@ -31,11 +31,11 @@ void toptobottom(stack1_t **head, int boo, t_stack *stack)
 	(*head)->next = tmp;
 	*head = tmp2;
 	if (boo == 1)
-		printf("\nrb");
+		printf("rb\n");
 	if (boo == 2)
-		printf("\nrr");
+		printf("rr\n");
 	else
-		printf("\nra");
+		printf("ra\n");
 	stack->operation += 1;
 }
 
@@ -56,10 +56,10 @@ void bottomtotop(stack1_t **head, int boo, t_stack *stack)
 	tmp2->next = *head;
 	*head = tmp2;
 	if (boo == 1)
-		printf("\nrrb");
+		printf("rrb\n");
 	if (boo == 2)
-		printf("\nrrr");
+		printf("rrr\n");
 	else
-		printf("\nrra");
+		printf("rra\n");
 	stack->operation += 1;
 }

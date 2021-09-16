@@ -63,13 +63,13 @@ int main (int argc, char **argv)
 	else
 		bigstack(&heada, &headb, &stack);
 
-	printf("\n--------------- heada after :\n");
+/*	printf("\n--------------- heada after :\n");
 	printlist(heada);
 
 	printf("\n--------------- headb :\n");
 	printlist(headb);
 	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
 	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack.firstquart, stack.median, stack.thirdquart, stack.operation);
-	freelist(heada);
+*/	freelist(heada);
 	return (0);
 }

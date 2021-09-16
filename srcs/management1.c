@@ -40,11 +40,13 @@ stack1_t *generatestack(int argc, char **argv)
 	stack1_t *head;
 	stack1_t *tmp;
 	int j;
+	int i;
 
+	i = 0;
 	head = NULL;
 	j = argc; 
 	
-	/*	
+		
 	j = 0;
 	argv = ft_split(argv[1], ' ');
 
@@ -60,7 +62,7 @@ stack1_t *generatestack(int argc, char **argv)
 		head = tmp;
 		i--;
 	}
-*/
+/*
 	while (argc > 1)
 	{
 		tmp = createnode(ft_atoi(argv[argc - 1]));
@@ -69,7 +71,7 @@ stack1_t *generatestack(int argc, char **argv)
 			head->prev = tmp;
 		head = tmp;
 		argc--;
-	}
+	}*/
 	return (head);
 }
 stack1_t *swapfirst(stack1_t *head, int boo, t_stack *stack)
@@ -80,11 +82,11 @@ stack1_t *swapfirst(stack1_t *head, int boo, t_stack *stack)
 	head->next->value = head->value;
 	head->value = i;
 	if (boo == 1) 
-		printf("\nsb");
+		printf("sb\n");
 	if (boo == 2)
-		printf("\nss");
+		printf("ss\n");
 	else
-		printf("\nsa");
+		printf("sa\n");
 	stack->operation += 1;
 	return (head);
 
@@ -114,8 +116,8 @@ void givenode( stack1_t **head,  stack1_t **head2, int boo, t_stack *stack)
 		*head2 = tmp;
 	}
 	if (boo == 1) 
-		printf("\npb");
+		printf("pb\n");
 	else
-		printf("\npa");
+		printf("pa\n");
 	stack->operation += 1;
 }

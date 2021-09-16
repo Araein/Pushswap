@@ -22,7 +22,7 @@ void	bigstack4(stack1_t **heada, stack1_t **headb, t_stack *stack)
 //			stack->keep--;
 		} else
 	toptobottom(heada, 0, stack);
-	printf("coucou4 i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
+//	printf("coucou4 i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
 	}
 	while ((*headb)->next != NULL)
 	{
@@ -32,7 +32,7 @@ void	bigstack4(stack1_t **heada, stack1_t **headb, t_stack *stack)
 		i--;
 	}
 	givenode(headb, heada, 0, stack);
-	printf("\nkeep4 = %d", stack->keep);
+//	printf("\nkeep4 = %d", stack->keep);
 }
 
 void	bigstack3(stack1_t **heada, stack1_t **headb, t_stack *stack)
@@ -56,7 +56,7 @@ void	bigstack3(stack1_t **heada, stack1_t **headb, t_stack *stack)
 			stack->keep--;
 		} else
 	toptobottom(heada, 0, stack);
-	printf("coucou3 i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
+//	printf("coucou3 i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
 	}
 	while ((*headb)->next != NULL)
 	{
@@ -66,7 +66,7 @@ void	bigstack3(stack1_t **heada, stack1_t **headb, t_stack *stack)
 		i--;
 	}
 	givenode(headb, heada, 0, stack);
-	printf("\nkeep3 = %d", stack->keep);
+//	printf("\nkeep3 = %d", stack->keep);
 }
 void	bigstack2(stack1_t **heada, stack1_t **headb, t_stack *stack)
 {
@@ -87,7 +87,7 @@ void	bigstack2(stack1_t **heada, stack1_t **headb, t_stack *stack)
 			stack->keep--;
 		} else
 	toptobottom(heada, 0, stack);
-	printf("coucou2 i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
+//	printf("coucou2 i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
 	}
 	while ((*headb)->next != NULL)
 	{
@@ -97,7 +97,7 @@ void	bigstack2(stack1_t **heada, stack1_t **headb, t_stack *stack)
 		i--;
 	}
 	givenode(headb, heada, 0, stack);
-	printf("\nkeep2 = %d", stack->keep);
+//	printf("\nkeep2 = %d", stack->keep);
 }
 
 void	bigstack(stack1_t **heada, stack1_t **headb, t_stack *stack)
@@ -124,7 +124,7 @@ void	bigstack(stack1_t **heada, stack1_t **headb, t_stack *stack)
 			stack->keep--;
 		} else
 		toptobottom(heada, 0, stack);
-		printf("coucou");
+//		printf("coucou");
 	}
 	while ((*headb)->next != NULL)
 	{
@@ -134,7 +134,7 @@ void	bigstack(stack1_t **heada, stack1_t **headb, t_stack *stack)
 		i--;
 	}
 	givenode(headb, heada, 0, stack);
-	printf("\nkeep = %d\n", stack->keep);
+//	printf("\nkeep = %d\n", stack->keep);
 	bigstack2(heada, headb, stack);
 	bigstack3(heada, headb, stack);
 	bigstack4(heada, headb, stack);
