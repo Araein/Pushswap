@@ -62,7 +62,7 @@ int main (int argc, char **argv)
 //	sortstack(&sorted, &stack);
 //	findmedian(&stack);
 //	printf("\n la size est : %d\n", stack.size);
-//	GERER DOUBLONS ///// NOMBRE UNIQUE ///// DUO DE NOMBRE
+//	GERER DOUBLONS ///// NOMBRE UNIQUE ///// DUO DE NOMBRE // charac non demandes // REGLER PUTAIN DE FIRSTSWAP
 	if (stack.size == 3)
 		triplechar(&heada, &stack);
 	else if (stack.size < 6)
