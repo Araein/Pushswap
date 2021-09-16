@@ -37,6 +37,7 @@ int main (int argc, char **argv)
 	/*checker si cest aue des int, si ya pa de double si cest pas vide */
 	/*segfault sur 2 chara*/
 	/*boucle infinie sur 5 2 4 8 6 4 -9 1*/
+						/*4 65 7 21 3*/
 	headb = NULL;
 	heada = generatestack(argc, argv);
 	sorted = generatestack(argc, argv);
@@ -57,8 +58,10 @@ int main (int argc, char **argv)
 		triplechar(&heada, &stack);
 	else if (stack.size < 6)
 	   fivechar(&heada, &headb, stack.size, &stack);	
-	else if (stack.size < 1000)
+	else if (stack.size < 101)
 		stacked(&heada, &headb, &stack);
+	else
+		bigstack(&heada, &headb, &stack);
 
 	printf("\n--------------- heada after :\n");
 	printlist(heada);

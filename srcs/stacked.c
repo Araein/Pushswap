@@ -172,7 +172,7 @@ void	stackedbis(stack1_t **heada, stack1_t **headb, t_stack *stack)
 			i++;
 		} else
 	toptobottom(heada, 0, stack);
-	printf("coucou i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
+//	printf("coucou i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
 	}
 	while ((*headb)->next != NULL)
 	{

@@ -22,6 +22,7 @@ typedef struct  s_stack
 	int			thirdquart;
 	int			direction;
 	int			operation;
+	int			keep;
 	stack1_t	*sorted;
 	stack1_t	*higher;
 	stack1_t	*lower;
@@ -52,5 +53,12 @@ void	flipit (stack1_t **headb, stack1_t **heada, t_stack *stack, int choose);
 
 void	stackedbis(stack1_t **heada, stack1_t **headb, t_stack *stack);
 void	freelist(stack1_t *head);
+
+void bigstack(stack1_t **head, stack1_t **head2, t_stack *stack);
+void bigstack2(stack1_t **head, stack1_t **head2, t_stack *stack);
+void bigstack3(stack1_t **head, stack1_t **head2, t_stack *stack);
+void bigstack4(stack1_t **head, stack1_t **head2, t_stack *stack);
+
+
 
 #endif
