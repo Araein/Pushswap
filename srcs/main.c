@@ -34,16 +34,25 @@ int main (int argc, char **argv)
 	stack1_t	*sorted;
 	t_stack		stack;
 
-	/*checker si cest aue des int, si ya pa de double si cest pas vide */
+	/*checker si cest aue des int, si ya pa de double si cest pas vide si ya pas de charac non desires*/
 	/*segfault sur 2 chara*/
 	/*boucle infinie sur 5 2 4 8 6 4 -9 1*/
 						/*4 65 7 21 3*/
 	headb = NULL;
+	if (argv[1] == NULL)
+		return (0);
 	heada = generatestack(argc, argv);
 	sorted = generatestack(argc, argv);
 	stack.size = countelem(heada);
 
-
+	if (stack.size < 1)
+		return (0);
+	if (stack.size == 2)
+	{
+		if ((*heada).value > (*heada).next->value)
+			swapfirst(heada, 0, &stack);
+		return (0);
+	}
 	stack.operation = 0;
 
 //	printf("\n--------------- heada before :\n");
