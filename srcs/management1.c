@@ -43,6 +43,24 @@ stack1_t *generatestack(int argc, char **argv)
 
 	head = NULL;
 	j = argc; 
+	
+	/*	
+	j = 0;
+	argv = ft_split(argv[1], ' ');
+
+	while(argv[i])
+		i++;
+	j = i;
+	while (i > 0)
+	{
+		tmp = createnode(ft_atoi(argv[i - 1]));
+		tmp->next = head;
+		if ( i < j)
+			head->prev = tmp;
+		head = tmp;
+		i--;
+	}
+*/
 	while (argc > 1)
 	{
 		tmp = createnode(ft_atoi(argv[argc - 1]));
