@@ -74,13 +74,35 @@ stack1_t *generatestack(int argc, char **argv)
 	}
 */	return (head);
 }
-stack1_t *swapfirst(stack1_t *head, int boo, t_stack *stack)
+stack1_t *swapfirst(stack1_t **head, int boo, t_stack *stack)
 {
-	int i;
+	//int i;
+	stack1_t *tmp;
+	stack1_t *tmp2;
 
+
+	tmp = *head;
+	tmp2 = (*head)->next;
+
+
+	tmp->next = tmp2->next;
+	tmp->prev = tmp2;
+	tmp2->prev = NULL;
+	tmp2->next = tmp;
+//	(*head)->next->prev = NULL;
+//	*head = (*head)->next;
+
+//	while ((*head)->next != NULL)
+//		*head = (*head)->next;
+//	tmp->prev = *head;
+//	tmp->next = NULL;
+//	(*head)->next = tmp;
+	*head = tmp2;
+	
+	/*
 	i = head->next->value;
 	head->next->value = head->value;
-	head->value = i;
+	head->value = i;*/
 	if (boo == 1) 
 		printf("sb\n");
 	if (boo == 2)
@@ -88,7 +110,7 @@ stack1_t *swapfirst(stack1_t *head, int boo, t_stack *stack)
 	else
 		printf("sa\n");
 	stack->operation += 1;
-	return (head);
+	return (*head);
 
 }
 

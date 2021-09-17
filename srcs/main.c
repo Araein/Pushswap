@@ -50,7 +50,7 @@ int main (int argc, char **argv)
 	if (stack.size == 2)
 	{
 		if ((*heada).value > (*heada).next->value)
-			swapfirst(heada, 0, &stack);
+			swapfirst(&heada, 0, &stack);
 		return (0);
 	}
 	stack.operation = 0;
