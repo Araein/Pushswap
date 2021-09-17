@@ -56,9 +56,9 @@ int main (int argc, char **argv)
 	}
 	stack.operation = 0;
 
-//	printf("\n--------------- heada before :\n");
-//	printlist(heada);
-
+/*	printf("\n--------------- heada before :\n");
+	printlist(heada);
+*/
 //	printf("\n//////////////\n");
 //	sortstack(&sorted, &stack);
 //	findmedian(&stack);
@@ -80,14 +80,14 @@ int main (int argc, char **argv)
 
 
 
-/*	printf("\n--------------- heada after :\n");
+	printf("\n--------------- heada after :\n");
 	printlist(heada);
 
 	printf("\n--------------- headb :\n");
 	printlist(headb);
 	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
 	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack.firstquart, stack.median, stack.thirdquart, stack.operation);
-*/	
+
 	freelist(heada);
 	return (0);
 }
