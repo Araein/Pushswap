@@ -39,6 +39,13 @@ int main (int argc, char **argv)
 	/*boucle infinie sur 5 2 4 8 6 4 -9 1*/
 						/*4 65 7 21 3*/
 						/*5 4 2 6 3*/
+						/*2 3 1 4 0*/
+	/*checksi tout est un integer*/
+	/*LEAKS*/
+
+	//check si liste est deja classee
+	//virer les printf
+
 	headb = NULL;
 	if (argv[1] == NULL)
 		return (0);
@@ -73,13 +80,13 @@ int main (int argc, char **argv)
 		sortstack(&sorted, &stack);
 		findmedian(&stack);
 		if (stack.size < 101)
-			stacked(&heada, &headb, &stack);
+			bigstack(&heada, &headb, &stack);
 		else
 			bigstack(&heada, &headb, &stack);
 	}
 
 
-
+/*
 	printf("\n--------------- heada after :\n");
 	printlist(heada);
 
@@ -87,7 +94,7 @@ int main (int argc, char **argv)
 	printlist(headb);
 	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
 	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack.firstquart, stack.median, stack.thirdquart, stack.operation);
-
+*/
 	freelist(heada);
 	return (0);
 }

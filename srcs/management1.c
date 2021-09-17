@@ -46,7 +46,7 @@ stack1_t *generatestack(int argc, char **argv)
 	head = NULL;
 	j = argc; 
 	
-		
+		/*
 	j = 0;
 	argv = ft_split(argv[1], ' ');
 
@@ -62,7 +62,9 @@ stack1_t *generatestack(int argc, char **argv)
 		head = tmp;
 		i--;
 	}
-/*
+
+*/
+
 	while (argc > 1)
 	{
 		tmp = createnode(ft_atoi(argv[argc - 1]));
@@ -72,7 +74,7 @@ stack1_t *generatestack(int argc, char **argv)
 		head = tmp;
 		argc--;
 	}
-*/	return (head);
+	return (head);
 }
 stack1_t *swapfirst(stack1_t **head, int boo, t_stack *stack)
 {
