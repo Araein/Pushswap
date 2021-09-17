@@ -44,8 +44,12 @@ void bottomtotop(stack1_t **head, int boo, t_stack *stack)
 	stack1_t *tmp;
 	stack1_t *tmp2;
 	
+//	printf("btt = %d\n", (*head)->next->value);
 	while ((*head)->next != NULL)
 		*head = (*head)->next;
+//	printf("btt = %d\n", (*head)->prev->value);
+	
+	
 	tmp2 = *head;
 	tmp = (*head)->prev;
 	while ((*head)->prev != NULL)

@@ -38,6 +38,7 @@ int main (int argc, char **argv)
 	/*segfault sur 2 chara*/
 	/*boucle infinie sur 5 2 4 8 6 4 -9 1*/
 						/*4 65 7 21 3*/
+						/*5 4 2 6 3*/
 	headb = NULL;
 	if (argv[1] == NULL)
 		return (0);
