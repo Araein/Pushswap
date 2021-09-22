@@ -20,6 +20,27 @@ typedef struct  s_stack
 	int			median;
 	int			firstquart;
 	int			thirdquart;
+	int			therest;
+	int			value;
+	/*	
+	int	one;
+	int	two;
+	int	three;
+	int	four;
+	int	five;
+	int	six;
+	int	seven;
+	int	eight;
+	int	nine;
+	int	ten;
+	int	eleven;
+*/	
+	
+	
+	
+	
+	
+	
 	int			direction;
 	int			operation;
 	int			keep;
@@ -63,6 +84,11 @@ void bigstack4(stack1_t **head, stack1_t **head2, t_stack *stack);
 //static int		sl(char const *s2, char c, int i);
 //static char		**affect(char const *s, char **dst, char c, int p);
 char			**ft_split(char const *s, char c);
+
+stack1_t        *listit(t_stack *stack, int size);
+void    dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack);
+void    chungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **delimiter);
+
 
 
 #endif
