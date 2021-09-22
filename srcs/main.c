@@ -45,6 +45,7 @@ int main (int argc, char **argv)
 
 	//check si liste est deja classee
 	//virer les printf
+	// ATTENTION PEUT ETRE FUCKED UP STACK OPERATION DANS BIGSTACK/STACKED (oubli dincrementation)
 
 	headb = NULL;
 	if (argv[1] == NULL)
@@ -63,14 +64,19 @@ int main (int argc, char **argv)
 	}
 	stack.operation = 0;
 
-/*	printf("\n--------------- heada before :\n");
-	printlist(heada);
-*/
+//	printf("\n--------------- heada before :\n");
+//	printlist(heada);
+
 //	printf("\n//////////////\n");
 //	sortstack(&sorted, &stack);
+//	listit(&stack, 11);
+	
 //	findmedian(&stack);
 //	printf("\n la size est : %d\n", stack.size);
 //	GERER DOUBLONS ///// NOMBRE UNIQUE ///// DUO DE NOMBRE // charac non demandes // REGLER PUTAIN DE FIRSTSWAP
+
+	
+	
 	if (stack.size == 3)
 		triplechar(&heada, &stack);
 	else if (stack.size < 6)
@@ -82,19 +88,29 @@ int main (int argc, char **argv)
 		if (stack.size < 101)
 			bigstack(&heada, &headb, &stack);
 		else
-			bigstack(&heada, &headb, &stack);
+	{	
+			dealwithmore(&heada, &headb, &stack);	
+		//bigstack(&heada, &headb, &stack);
+	//		listit(&stack, 11);
+	} 
 	}
 
 
-/*
-	printf("\n--------------- heada after :\n");
-	printlist(heada);
 
-	printf("\n--------------- headb :\n");
-	printlist(headb);
-	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
-	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack.firstquart, stack.median, stack.thirdquart, stack.operation);
-*/
+
+
+
+
+
+//	printf("\n--------------- heada after :\n");
+//	printlist(heada);
+
+//	printf("\n--------------- headb :\n");
+//	printlist(headb);
+//	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
+//	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack.firstquart, stack.median, stack.thirdquart, stack.operation);
+
+	freelist(stack.sorted);
 	freelist(heada);
 	return (0);
 }

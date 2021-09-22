@@ -75,7 +75,7 @@ void	findmedian (t_stack *stack)
 	}
 	stack->thirdquart = tmp->value;
 
-	freelist(stack->sorted);
+//	freelist(stack->sorted);
 }
 
 void	findhigherlower (stack1_t **head, t_stack *stack)
@@ -186,16 +186,16 @@ void	stackedbis(stack1_t **heada, stack1_t **headb, t_stack *stack)
 
 void	stacked(stack1_t **heada, stack1_t **headb, t_stack *stack)
 {
-	stack1_t	*tmp;
+//	stack1_t	*tmp;
 	int			i;
 	int			choose;
 	int			test;
 
 	test = 0;
 	i = 0;
-	tmp = *heada;
+//	tmp = *heada;
 	choose = stack->size;
-	tmp = *headb;
+//	tmp = *headb;
 	choose = 0;
 	
 	//if(stack->size % 2 != 0)
