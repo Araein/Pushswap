@@ -20,8 +20,16 @@ void	bigstack4(stack1_t **heada, stack1_t **headb, t_stack *stack)
 			givenode(heada, headb, 1, stack);
 			i++;
 //			stack->keep--;
-		} else
-	toptobottom(heada, 0, stack);
+		} else if (i > 2 && (*headb)->value < (*headb)->next->value)
+                {
+                        toptobottom(heada, 2, stack);
+                        toptobottom(headb, 2, stack);
+                        stack->operation += 1;
+                        printf("rr\n");
+                } else
+                toptobottom(heada, 0, stack);
+//              printf("coucou");
+
 //	printf("coucou4 i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
 	}
 	while ((*headb)->next != NULL)
@@ -54,8 +62,16 @@ void	bigstack3(stack1_t **heada, stack1_t **headb, t_stack *stack)
 			givenode(heada, headb, 1, stack);
 			i++;
 			stack->keep--;
-		} else
-	toptobottom(heada, 0, stack);
+		} else if (i > 2 && (*headb)->value < (*headb)->next->value)
+                {
+                        toptobottom(heada, 2, stack);
+                        toptobottom(headb, 2, stack);
+                        stack->operation += 1;
+                        printf("rr\n");
+                } else
+                toptobottom(heada, 0, stack);
+//              printf("coucou");
+
 //	printf("coucou3 i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
 	}
 	while ((*headb)->next != NULL)
@@ -85,8 +101,15 @@ void	bigstack2(stack1_t **heada, stack1_t **headb, t_stack *stack)
 			givenode(heada, headb, 1, stack);
 			i++;
 			stack->keep--;
-		} else
-	toptobottom(heada, 0, stack);
+		} else if (i > 2 && (*headb)->value < (*headb)->next->value)
+                {
+                        toptobottom(heada, 2, stack);
+                        toptobottom(headb, 2, stack);
+                        stack->operation += 1;
+                        printf("rr\n");
+                } else
+                toptobottom(heada, 0, stack);
+//              printf("coucou");
 //	printf("coucou2 i = %d / median= %d / value = %d", i, stack->median, (*heada)->value);
 	}
 	while ((*headb)->next != NULL)
@@ -102,15 +125,15 @@ void	bigstack2(stack1_t **heada, stack1_t **headb, t_stack *stack)
 
 void	bigstack(stack1_t **heada, stack1_t **headb, t_stack *stack)
 {
-	stack1_t	*tmp;
+	//stack1_t	*tmp;
 	int			i;
 	int			choose;
-	int			test;
+//	int			test;
 
-	test = 0;
+//	test = 0;
 	i = 0;
-	tmp = *heada;
-	tmp = *headb;
+//	tmp = *heada;
+//	tmp = *headb;
 	choose = 0;
 	
 	stack->keep = stack->size;
@@ -122,6 +145,12 @@ void	bigstack(stack1_t **heada, stack1_t **headb, t_stack *stack)
 			givenode(heada, headb, 1, stack);
 			i++;
 			stack->keep--;
+		} else if (i > 2 && (*headb)->value < (*headb)->next->value)
+		{
+			toptobottom(heada, 2, stack);
+			toptobottom(headb, 2, stack);
+			stack->operation += 1;
+			printf("rr\n");
 		} else
 		toptobottom(heada, 0, stack);
 //		printf("coucou");

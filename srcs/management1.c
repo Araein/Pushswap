@@ -40,9 +40,9 @@ stack1_t *generatestack(int argc, char **argv)
 	stack1_t *head;
 	stack1_t *tmp;
 	int j;
-	int i;
+	//int i;
 
-	i = 0;
+//	i = 0;
 	head = NULL;
 	j = argc; 
 	
