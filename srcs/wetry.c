@@ -91,7 +91,7 @@ void    lastchungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t
                         givenode(heada, headb, 1, stack);
                         i++;
 //                      stack->keep--;
-                } else if (i > 2 && (*headb)->value < (*headb)->next->value)
+                } else if (i > 1 && (*headb)->value < (*headb)->next->value)
                 {
                         toptobottom(heada, 2, stack);
                         toptobottom(headb, 2, stack);
@@ -112,8 +112,6 @@ void    lastchungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t
 		j--;
 	}
 */
-
-
         while ((*headb)->next != NULL)
         {
                 findhigherlower(headb, stack);
@@ -138,14 +136,14 @@ void	chungus( stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del
 //	stack->value = 
 //	stack->keep = stack->size;
 	
-	while (j < stack->size && i < stack->size / 9) //ATTENTION
+	while (j < stack->size && i < stack->size / 8) //ATTENTION
 	{
 		if ((*heada)->value > (*delimiter)->value && ((*delimiter)->prev == NULL || (*heada)->value <= (*delimiter)->prev->value))
 		{
 			givenode(heada, headb, 1, stack);
 			i++;
 //			stack->keep--;
-		} else if (i > 2 && (*headb)->value < (*headb)->next->value)
+		} else if (i > 1 && (*headb)->value < (*headb)->next->value)
 		{
 			toptobottom(heada, 2, stack);
 			toptobottom(headb, 2, stack);
@@ -179,7 +177,7 @@ void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	stack1_t	*tmp;
 
 	i = 0;
-	delimiter = listit(stack, 9);   //premier element est le plus grand
+	delimiter = listit(stack, 8);   //premier element est le plus grand
 	tmp = delimiter;
         while(tmp->next != NULL)
         	tmp = tmp->next;
@@ -187,7 +185,7 @@ void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	delimiter->prev = NULL;
 //	printlist (delimiter);
 //	printf("stack->value = %d ", stack->value);
-	while( i < 8)
+	while( i < 7)
 	{
 //		printf("\nheyboss!\n");
 		chungus(heada, headb, stack, &delimiter);
