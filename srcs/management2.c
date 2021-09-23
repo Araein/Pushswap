@@ -62,7 +62,7 @@ void bottomtotop(stack1_t **head, int boo, t_stack *stack)
 	if (boo == 1)
 		printf("rrb\n");
 	if (boo == 2)
-		printf("rrr\n");
+		return ;
 	if (boo == 0)
 		printf("rra\n");
 	stack->operation += 1;

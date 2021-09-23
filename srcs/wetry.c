@@ -46,72 +46,86 @@ stack1_t	*listit(t_stack *stack, int size) //cree une lsite chainee contenant le
 			head = head->next;
 			head->next = NULL;
 		 }		
-//		printf("\nheyboss!\n");
-/*		if (i > 0)
-			head->prev = tmp;
-		else
-			head->prev = NULL;
-*/
 		i++;
-//printf("\nheyboss!\n");
 
         }
-//	printf("\nheyboss!\n");
-
 	head->next = NULL;
 	while (head->prev != NULL)
 	{
 		head = head->prev;
         }
-
-//	printlist(head);
-//	printf("\ncoucou\n");
 	return (head);
 }   //pas oublier de free la liste cree
 
 
 void    lastchungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **delimiter)
 {
-        //stack1_t      *tmp;
+        stack1_t	      *tmp;
         int                     i;
         int                     choose;
 	int			j;
+//	int			d;
 
+
+//	d = 0;
         i = 0;
         choose = 0;
-//      stack->value = 
-//      stack->keep = stack->size;
 	j = 0;
-//	printf("\nstack->size = %d // rest : %d // delimiter : %d\n", stack->size, stack->therest, 0/*(*delimiter)->preva->value*/);
+	tmp = *heada;
 
-        while (j < stack->size/* + stack->therest*/)
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+
+
+	int d;
+
+	d = 0;
+
+        while ( i < 2)
+        {
+
+                if ( tmp->value <= (*delimiter)->value)
+                        d++;
+                tmp = tmp->prev;
+                i++;
+        }
+        if ( d > 0)
+        {
+                while (i > 0)
+                {
+                        i--;
+                        bottomtotop(heada, 0, stack);
+                }
+        }
+
+        i = 0;
+        d = 0;
+        tmp = *heada;
+        while (tmp->next != NULL)
+                tmp = tmp->next;
+
+j = 0;
+
+
+        while (i < stack->size - stack->keep)
         {
                 if ((*heada)->value <= (*delimiter)->value)
                 {
                         givenode(heada, headb, 1, stack);
                         i++;
-//                      stack->keep--;
                 } else if (i > 1 && (*headb)->value < (*headb)->next->value)
                 {
                         toptobottom(heada, 2, stack);
                         toptobottom(headb, 2, stack);
                         printf("rr\n");
-                } else
-           	{
-		   	toptobottom(heada, 0, stack);
-		} 
+                } else if ( (j == 0 || i == 0) && tmp->value <= (*delimiter)->value)
+		{
+			tmp = tmp->prev;
+			bottomtotop(heada, 0, stack);
+		}else
+			toptobottom(heada, 0, stack);
 	       	j++;
-	
-	
-		//      printf("\ni = %d stack = %d coucou \n", i, stack->value);
         }
-//	j = j - i;
-/*	while (j > 0)
-	{
-		bottomtotop(heada, 0, stack);
-		j--;
-	}
-*/
         while ((*headb)->next != NULL)
         {
                 findhigherlower(headb, stack);
@@ -120,50 +134,82 @@ void    lastchungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t
                 i--;
         }
         givenode(headb, heada, 0, stack);
-  //      *delimiter = (*delimiter)->next;
 }
 
 void	chungus( stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **delimiter)
 {
-	//stack1_t	*tmp;
+	stack1_t		*tmp;
 	int			i;
 	int			choose;
 	int 			j;
+	int			d;
 
+	d = 0;
 	i = 0;
 	j = 0;
 	choose = 0;
-//	stack->value = 
-//	stack->keep = stack->size;
-	
-	while (j < stack->size && i < stack->size / 8) //ATTENTION
+	tmp = *heada;
+
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+while (j < 20)
+{
+
+	while ( i < 2)
+	{
+
+		if ( tmp->value > (*delimiter)->value && ((*delimiter)->prev == NULL || tmp->value <= (*delimiter)->prev->value))
+			d++;	
+		tmp = tmp->prev;
+		i++;
+	}
+	if ( d > 0)
+	{
+		while (i > 0)
+		{
+			i--;
+			bottomtotop(heada, 0, stack);
+		}
+	}
+
+	i = 0;
+	d = 0;
+	tmp = *heada;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+
+	j++;
+}
+j = 0;
+
+	while (i < stack->size / 8) //ATTENTION
 	{
 		if ((*heada)->value > (*delimiter)->value && ((*delimiter)->prev == NULL || (*heada)->value <= (*delimiter)->prev->value))
 		{
 			givenode(heada, headb, 1, stack);
 			i++;
-//			stack->keep--;
+			stack->keep++;
 		} else if (i > 1 && (*headb)->value < (*headb)->next->value)
 		{
 			toptobottom(heada, 2, stack);
 			toptobottom(headb, 2, stack);
 			printf("rr\n");
+		} else if ( (j == 0 || i == 0) && (tmp)->value > (*delimiter)->value && ((*delimiter)->prev == NULL || (tmp)->value     <= (*delimiter)->prev->value))
+		{
+			tmp = tmp->prev;
+			bottomtotop(heada, 0, stack);
 		} else
 		toptobottom(heada, 0, stack);
-	//	printf("i = %d stack = %d coucou ", i, stack->value);
+		
 		j++;
 	}
-
-
-//	printlist(*heada);
-//	printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-//	printlist(*headb);
 	while ((*headb)->next != NULL)
 	{
 		findhigherlower(headb, stack);
 		choose = decidewhofirst(headb, stack, i);
 		flipit(headb, heada, stack, choose);
 		i--;
+//		stack->keep++;
 	}
 	givenode(headb, heada, 0, stack);
 //	printf("\ndelimiter = %d\n", (*delimiter)->value);
@@ -181,7 +227,9 @@ void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	tmp = delimiter;
         while(tmp->next != NULL)
         	tmp = tmp->next;
-	
+	stack->keep = 0;
+
+
 	delimiter->prev = NULL;
 //	printlist (delimiter);
 //	printf("stack->value = %d ", stack->value);

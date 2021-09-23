@@ -109,6 +109,9 @@ int main (int argc, char **argv)
 //	printlist(headb);
 //	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
 //	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack.firstquart, stack.median, stack.thirdquart, stack.operation);
+	
+
+//	printf("\neeee = %d\n", stack.keep);
 
 	freelist(stack.sorted);
 	freelist(heada);

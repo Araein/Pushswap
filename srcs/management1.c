@@ -96,7 +96,7 @@ stack1_t *swapfirst(stack1_t **head, int boo, t_stack *stack)
 	if (boo == 1) 
 		printf("sb\n");
 	if (boo == 2)
-		printf("ss\n");
+		return (*head);
 	else
 		printf("sa\n");
 	stack->operation += 1;

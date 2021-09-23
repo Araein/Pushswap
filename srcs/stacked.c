@@ -133,25 +133,48 @@ int		decidewhofirst(stack1_t **head, t_stack *stack, int i)
 void	flipit( stack1_t **headb, stack1_t **heada, t_stack *stack, int choose)
 {
 	int i;
+//	int d;
 
+//	d = 0;
 	i = 0;
+	
 	if (stack->direction == 1)
 	{
-		while ( i < choose)
+	/*	if ((*heada)->value > (*heada)->next->value && choose == 1)
+		{
+//			swapfirst(heada, 2, stack);
+			swapfirst(headb, 0, stack);
+//			printf("ss\n");
+		} else
+	*/	while ( i < choose)
 		{
 			i++;
-			toptobottom (headb, 1, stack);
+	/*		if ((*heada)->value > (*heada)->next->value)
+			{
+				toptobottom(heada, 2, stack);
+                        	toptobottom(headb, 2, stack);
+                        	printf("rr\n");
+				d++;
+			} else
+			{*/
+				toptobottom (headb, 1, stack);
+	
+			}	
 		}
-	}
 	if (stack->direction == 2)
 	{
 		while ( i < choose)
 		{
 			i++;
-			bottomtotop (headb, 1, stack);
+			bottomtotop (headb, 1, stack); //faire un truc pour faire remonter le sbails?
 		}
 	}
-	givenode( headb, heada, 0, stack);
+/*	while ( d != 0)
+	{
+		bottomtotop(heada, 0, stack);
+		d--;
+	}
+*/	givenode( headb, heada, 0, stack);
 }
 
 void	stackedbis(stack1_t **heada, stack1_t **headb, t_stack *stack)
