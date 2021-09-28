@@ -6,7 +6,6 @@ stack1_t	*listit(t_stack *stack, int size) //cree une lsite chainee contenant le
 	stack1_t	*ref;
 	stack1_t	*head;
 	int		i;
-//	int		value;
 	int		j;
 
 	j = 0;
@@ -14,35 +13,22 @@ stack1_t	*listit(t_stack *stack, int size) //cree une lsite chainee contenant le
 	stack->therest = stack->size % size; 
 	i = 0;
 	ref = stack->sorted;
-//	printlist(ref);  
-	//     printf("\nvalue = %d / j = %d", stack->value, j);
 
-	//head = NULL;
 	while (i < size - 1)
         {                
-      // printf("\nheyboss!\n");
-
 		j = 0;
 		while (j < stack->value)
 		{
-	//	       printf("\nheyboss!\n");
-          // printf("\nvalue = %d / j = %d\n", stack->value, j);
-
 			j++;
 			ref = ref->next;
-//  printf("\nCOUCOU\n");
 		}
-//		printf("\nCOUCOU\n");
 		if (i == 0)
 			head = createnode(ref->value);
 		else
 		{
-		
 			tmp = createnode(ref->value);
-//			printf("\nhead value = %d // tmp->value = %d\n", head->value, tmp->value);
 			head->next = tmp;
 			tmp->prev = head;
-//			tmp = head;
 			head = head->next;
 			head->next = NULL;
 		 }		
@@ -51,60 +37,26 @@ stack1_t	*listit(t_stack *stack, int size) //cree une lsite chainee contenant le
         }
 	head->next = NULL;
 	while (head->prev != NULL)
-	{
 		head = head->prev;
-        }
 	return (head);
-}   //pas oublier de free la liste cree
+}
 
 
 void    lastchungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **delimiter)
 {
-        stack1_t	      *tmp;
-        int                     i;
-        int                     choose;
+	stack1_t	*tmp;
+	int			i;
+	int			choose;
 	int			j;
-//	int			d;
 
-
-//	d = 0;
-        i = 0;
-        choose = 0;
-	j = 0;
+	i = 0;
+	choose = 0;
 	tmp = *heada;
 
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 
-
-	int d;
-
-	d = 0;
-
-  /*      while ( i < 2)
-        {
-
-                if ( tmp->value <= (*delimiter)->value)
-                        d++;
-                tmp = tmp->prev;
-                i++;
-        }
-        if ( d > 0)
-        {
-                while (i > 0)
-                {
-                        i--;
-                        bottomtotop(heada, 0, stack);
-                }
-        }
-
-        i = 0;
-        d = 0;
-        tmp = *heada;
-        while (tmp->next != NULL)
-                tmp = tmp->next;
-*/
-j = 0;
+	j = 0;
 
 
         while (i < stack->size - stack->keep)
@@ -126,7 +78,8 @@ j = 0;
 			toptobottom(heada, 0, stack);
 	       	j++;
         }
-        while ((*headb)->next != NULL)
+  i = countelem(*headb);
+  		while ((*headb)->next != NULL)
         {
                 findhigherlower(headb, stack);
                 choose = decidewhofirst(headb, stack, i);
@@ -152,41 +105,10 @@ void	chungus( stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del
 
 	while (tmp->next != NULL)
 		tmp = tmp->next;
-/*while (j < 20)
-{
 
-	while ( i < 2)
-	{
-
-		if ( tmp->value > (*delimiter)->value && ((*delimiter)->prev == NULL || tmp->value <= (*delimiter)->prev->value))
-			d++;	
-		tmp = tmp->prev;
-		i++;
-	}
-	if ( d > 0)
-	{
-		while (i > 0)
-		{
-			i--;
-			bottomtotop(heada, 0, stack);
-		}
-	}
-
-	i = 0;
-	d = 0;
-	tmp = *heada;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-
-	j++;
-}*/
 j = 0;
 
-
-
-
-
-	while (i < stack->size / 11) //ATTENTION
+	while (i < stack->size / 11)
 	{
 		if ((*heada)->value > (*delimiter)->value && ((*delimiter)->prev == NULL || (*heada)->value <= (*delimiter)->prev->value))
 		{
@@ -209,7 +131,7 @@ j = 0;
 	}
 
 i = countelem(*headb);
-if (stack->one > 8)
+/*if (stack->one > 8)
 {
 	while ((*headb)->next != NULL)
 	{
@@ -217,13 +139,10 @@ if (stack->one > 8)
 		choose = decidewhofirst(headb, stack, i);
 		flipit(headb, heada, stack, choose);
 		i--;
-//		stack->keep++;
 	}
 
 	givenode(headb, heada, 0, stack);
-}
-
-
+}*/
 	*delimiter = (*delimiter)->next;
 }
 
@@ -235,12 +154,14 @@ void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	stack1_t	*delimiter;
 	int 		i;
 	stack1_t	*tmp;
+	stack1_t	*tmp2;
 
 	i = 0;
-	delimiter = listit(stack, 11);   //premier element est le plus grand
+	delimiter = listit(stack, 11);   
 	tmp = delimiter;
-        while(tmp->next != NULL)
-        	tmp = tmp->next;
+    tmp2 = delimiter;
+	while(tmp->next != NULL)
+		tmp = tmp->next;
 	stack->keep = 0;
 	stack->one = 0;
 
@@ -253,7 +174,7 @@ void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	}
 	lastchungus(heada, headb, stack, &tmp);
 
-	/*REFAIRE UN ROUND AVEC LE RESTE*/
+	freelist(tmp2);
 	/*freedelimiter*/
 }
 
