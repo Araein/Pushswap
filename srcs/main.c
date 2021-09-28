@@ -64,10 +64,16 @@ int main (int argc, char **argv)
 	/*LEAKS*/
 
 	//check si liste est deja classee
-	//virer les printf
+
 	headb = NULL;
 	if (argv[1] == NULL)
 		return (0);
+
+	/*
+	 * char **args;
+	 * args = doargs (argc, argv);
+	*/
+
 	heada = generatestack(argc, argv);
 	sorted = generatestack(argc, argv);
 	stack.size = countelem(heada);

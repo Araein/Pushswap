@@ -25,6 +25,8 @@ void printlist (stack1_t *head)
 	}
 }
 */
+
+
 stack1_t *createnode (int value)
 {
 	stack1_t *result = malloc(sizeof(stack1_t));
@@ -41,6 +43,12 @@ stack1_t *generatestack(int argc, char **argv)
 	stack1_t *tmp;
 	int j;
 
+	
+
+
+
+
+
 	head = NULL;
 	j = argc; 
 
@@ -55,6 +63,12 @@ stack1_t *generatestack(int argc, char **argv)
 	}
 	return (head);
 }
+
+
+
+
+
+
 stack1_t *swapfirst(stack1_t **head, int boo, t_stack *stack)
 {
 	stack1_t *tmp;
