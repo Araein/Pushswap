@@ -76,7 +76,8 @@ int main (int argc, char **argv)
 //	GERER DOUBLONS ///// NOMBRE UNIQUE ///// DUO DE NOMBRE // charac non demandes // REGLER PUTAIN DE FIRSTSWAP
 
 	
-	
+	stack.one = 11;
+
 	if (stack.size == 3)
 		triplechar(&heada, &stack);
 	else if (stack.size < 6)
@@ -85,14 +86,14 @@ int main (int argc, char **argv)
 	{		
 		sortstack(&sorted, &stack);
 		findmedian(&stack);
-		if (stack.size < 101)
-			bigstack(&heada, &headb, &stack);
-		else
-	{	
+		if (stack.size < 201)
+			stack.one = 5;
+	/*	else
+	{	*/
 			dealwithmore(&heada, &headb, &stack);	
 		//bigstack(&heada, &headb, &stack);
 	//		listit(&stack, 11);
-	} 
+	
 	}
 
 

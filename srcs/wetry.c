@@ -108,7 +108,7 @@ void	chungus( stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del
 
 j = 0;
 
-	while (i < stack->size / 11)
+	while (i < stack->size / stack->one)
 	{
 		if ((*heada)->value > (*delimiter)->value && ((*delimiter)->prev == NULL || (*heada)->value <= (*delimiter)->prev->value))
 		{
@@ -131,18 +131,7 @@ j = 0;
 	}
 
 i = countelem(*headb);
-/*if (stack->one > 8)
-{
-	while ((*headb)->next != NULL)
-	{
-		findhigherlower(headb, stack);
-		choose = decidewhofirst(headb, stack, i);
-		flipit(headb, heada, stack, choose);
-		i--;
-	}
 
-	givenode(headb, heada, 0, stack);
-}*/
 	*delimiter = (*delimiter)->next;
 }
 
@@ -155,21 +144,20 @@ void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	int 		i;
 	stack1_t	*tmp;
 	stack1_t	*tmp2;
-
+	
+//	stack->one = 11;
 	i = 0;
-	delimiter = listit(stack, 11);   
+	delimiter = listit(stack, stack->one);   
 	tmp = delimiter;
     tmp2 = delimiter;
 	while(tmp->next != NULL)
 		tmp = tmp->next;
 	stack->keep = 0;
-	stack->one = 0;
 
 	delimiter->prev = NULL;
-	while( i < 10)
+	while( i < stack->one - 1)
 	{
 		chungus(heada, headb, stack, &delimiter);
-		stack->one++;
 		i++;
 	}
 	lastchungus(heada, headb, stack, &tmp);
