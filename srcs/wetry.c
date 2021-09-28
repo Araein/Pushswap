@@ -81,7 +81,7 @@ void    lastchungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t
 
 	d = 0;
 
-        while ( i < 2)
+  /*      while ( i < 2)
         {
 
                 if ( tmp->value <= (*delimiter)->value)
@@ -103,7 +103,7 @@ void    lastchungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t
         tmp = *heada;
         while (tmp->next != NULL)
                 tmp = tmp->next;
-
+*/
 j = 0;
 
 
@@ -152,7 +152,7 @@ void	chungus( stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del
 
 	while (tmp->next != NULL)
 		tmp = tmp->next;
-while (j < 20)
+/*while (j < 20)
 {
 
 	while ( i < 2)
@@ -179,10 +179,14 @@ while (j < 20)
 		tmp = tmp->next;
 
 	j++;
-}
+}*/
 j = 0;
 
-	while (i < stack->size / 8) //ATTENTION
+
+
+
+
+	while (i < stack->size / 11) //ATTENTION
 	{
 		if ((*heada)->value > (*delimiter)->value && ((*delimiter)->prev == NULL || (*heada)->value <= (*delimiter)->prev->value))
 		{
@@ -203,6 +207,10 @@ j = 0;
 		
 		j++;
 	}
+
+i = countelem(*headb);
+if (stack->one > 8)
+{
 	while ((*headb)->next != NULL)
 	{
 		findhigherlower(headb, stack);
@@ -211,10 +219,16 @@ j = 0;
 		i--;
 //		stack->keep++;
 	}
+
 	givenode(headb, heada, 0, stack);
-//	printf("\ndelimiter = %d\n", (*delimiter)->value);
+}
+
+
 	*delimiter = (*delimiter)->next;
 }
+
+
+
 
 void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 {
@@ -223,27 +237,21 @@ void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	stack1_t	*tmp;
 
 	i = 0;
-	delimiter = listit(stack, 8);   //premier element est le plus grand
+	delimiter = listit(stack, 11);   //premier element est le plus grand
 	tmp = delimiter;
         while(tmp->next != NULL)
         	tmp = tmp->next;
 	stack->keep = 0;
-
+	stack->one = 0;
 
 	delimiter->prev = NULL;
-//	printlist (delimiter);
-//	printf("stack->value = %d ", stack->value);
-	while( i < 7)
+	while( i < 10)
 	{
-//		printf("\nheyboss!\n");
 		chungus(heada, headb, stack, &delimiter);
-//		printf("\nisitbetter? i = %d\n", i);
-//		printlist(*heada);
+		stack->one++;
 		i++;
 	}
-//	printf("y\neeeeeeeeeee\n");
 	lastchungus(heada, headb, stack, &tmp);
-//	printlist(*heada);
 
 	/*REFAIRE UN ROUND AVEC LE RESTE*/
 	/*freedelimiter*/

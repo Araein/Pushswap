@@ -22,9 +22,10 @@ typedef struct  s_stack
 	int			thirdquart;
 	int			therest;
 	int			value;
-	/*	
+		
 	int	one;
-	int	two;
+	
+	/*int	two;
 	int	three;
 	int	four;
 	int	five;
