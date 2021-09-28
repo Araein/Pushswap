@@ -89,7 +89,7 @@ char			**ft_split(char const *s, char c);
 stack1_t        *listit(t_stack *stack, int size);
 void    dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack);
 void    chungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **delimiter);
-
-
+void	ft_putchar(char c);
+void	ft_putstr(char const *s);
 
 #endif

@@ -1,5 +1,25 @@
 #include "Pushswap.h"
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char const *s)
+{
+	int i;
+
+	if (s)
+	{
+		i = 0;
+		while (s[i] != '\0')
+		{
+			ft_putchar(s[i], 1);
+			i++;
+		}
+	}
+}
+
 
 int		ft_atoi(const char *str)
 {
@@ -45,8 +65,6 @@ int main (int argc, char **argv)
 
 	//check si liste est deja classee
 	//virer les printf
-	// ATTENTION PEUT ETRE FUCKED UP STACK OPERATION DANS BIGSTACK/STACKED (oubli dincrementation)
-
 	headb = NULL;
 	if (argv[1] == NULL)
 		return (0);
@@ -63,21 +81,10 @@ int main (int argc, char **argv)
 		return (0);
 	}
 	stack.operation = 0;
-
-//	printf("\n--------------- heada before :\n");
-//	printlist(heada);
-
-//	printf("\n//////////////\n");
-//	sortstack(&sorted, &stack);
-//	listit(&stack, 11);
 	
-//	findmedian(&stack);
-//	printf("\n la size est : %d\n", stack.size);
 //	GERER DOUBLONS ///// NOMBRE UNIQUE ///// DUO DE NOMBRE // charac non demandes // REGLER PUTAIN DE FIRSTSWAP
 
-	
 	stack.one = 11;
-
 	if (stack.size == 3)
 		triplechar(&heada, &stack);
 	else if (stack.size < 6)
@@ -85,35 +92,10 @@ int main (int argc, char **argv)
 	else
 	{		
 		sortstack(&sorted, &stack);
-		findmedian(&stack);
 		if (stack.size < 201)
 			stack.one = 5;
-	/*	else
-	{	*/
-			dealwithmore(&heada, &headb, &stack);	
-		//bigstack(&heada, &headb, &stack);
-	//		listit(&stack, 11);
-	
+		dealwithmore(&heada, &headb, &stack);	
 	}
-
-
-
-
-
-
-
-
-//	printf("\n--------------- heada after :\n");
-//	printlist(heada);
-
-//	printf("\n--------------- headb :\n");
-//	printlist(headb);
-//	printf("\nNOMBRE DE COMMANDES -> %d\n", stack.operation);
-//	printf("\n\nfirst = %d // median = %d // third = %d\n // operation = %d", stack.firstquart, stack.median, stack.thirdquart, stack.operation);
-	
-
-//	printf("\neeee = %d\n", stack.keep);
-
 	freelist(stack.sorted);
 	freelist(heada);
 	return (0);
