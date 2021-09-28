@@ -31,11 +31,11 @@ void toptobottom(stack1_t **head, int boo, t_stack *stack)
 	(*head)->next = tmp;
 	*head = tmp2;
 	if (boo == 1)
-		printf("rb\n");
+		ft_putstr("rb\n");
 	if (boo == 2)
 		return ;
 	if (boo == 0)
-		printf("ra\n");
+		ft_putstr("ra\n");
 	stack->operation += 1;
 }
 
@@ -44,12 +44,8 @@ void bottomtotop(stack1_t **head, int boo, t_stack *stack)
 	stack1_t *tmp;
 	stack1_t *tmp2;
 	
-//	printf("btt = %d\n", (*head)->next->value);
 	while ((*head)->next != NULL)
 		*head = (*head)->next;
-//	printf("btt = %d\n", (*head)->prev->value);
-	
-	
 	tmp2 = *head;
 	tmp = (*head)->prev;
 	while ((*head)->prev != NULL)
@@ -60,10 +56,10 @@ void bottomtotop(stack1_t **head, int boo, t_stack *stack)
 	tmp2->next = *head;
 	*head = tmp2;
 	if (boo == 1)
-		printf("rrb\n");
+		ft_putstr("rrb\n");
 	if (boo == 2)
 		return ;
 	if (boo == 0)
-		printf("rra\n");
+		ft_putstr("rra\n");
 	stack->operation += 1;
 }

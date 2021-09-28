@@ -14,7 +14,7 @@ void	ft_putstr(char const *s)
 		i = 0;
 		while (s[i] != '\0')
 		{
-			ft_putchar(s[i], 1);
+			ft_putchar(s[i]);
 			i++;
 		}
 	}

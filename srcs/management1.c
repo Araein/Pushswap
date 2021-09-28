@@ -12,7 +12,7 @@ void	freelist(stack1_t *head)
        free(tmp);
     }
 }
-
+/*
 void printlist (stack1_t *head)
 {
 	stack1_t *tmp;
@@ -24,7 +24,7 @@ void printlist (stack1_t *head)
 		tmp = tmp->next;
 	}
 }
-
+*/
 stack1_t *createnode (int value)
 {
 	stack1_t *result = malloc(sizeof(stack1_t));
@@ -40,30 +40,9 @@ stack1_t *generatestack(int argc, char **argv)
 	stack1_t *head;
 	stack1_t *tmp;
 	int j;
-	//int i;
 
-//	i = 0;
 	head = NULL;
 	j = argc; 
-	
-		/*
-	j = 0;
-	argv = ft_split(argv[1], ' ');
-
-	while(argv[i])
-		i++;
-	j = i;
-	while (i > 0)
-	{
-		tmp = createnode(ft_atoi(argv[i - 1]));
-		tmp->next = head;
-		if ( i < j)
-			head->prev = tmp;
-		head = tmp;
-		i--;
-	}
-
-*/
 
 	while (argc > 1)
 	{
@@ -94,11 +73,11 @@ stack1_t *swapfirst(stack1_t **head, int boo, t_stack *stack)
 	if ((*head)->next->next != NULL)
 		(*head)->next->next->prev = (*head)->next;
 	if (boo == 1) 
-		printf("sb\n");
+		ft_putstr("sb\n");
 	if (boo == 2)
 		return (*head);
 	else
-		printf("sa\n");
+		ft_putstr("sa\n");
 	stack->operation += 1;
 	return (*head);
 
@@ -128,8 +107,8 @@ void givenode( stack1_t **head,  stack1_t **head2, int boo, t_stack *stack)
 		*head2 = tmp;
 	}
 	if (boo == 1) 
-		printf("pb\n");
+		ft_putstr("pb\n");
 	else
-		printf("pa\n");
+		ft_putstr("pa\n");
 	stack->operation += 1;
 }

@@ -69,7 +69,7 @@ void    lastchungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t
                 {
                         toptobottom(heada, 2, stack);
                         toptobottom(headb, 2, stack);
-                        printf("rr\n");
+                        ft_putstr("rr\n");
                 } else if ( (j == 0 || i == 0) && tmp->value <= (*delimiter)->value)
 		{
 			tmp = tmp->prev;
@@ -119,7 +119,7 @@ j = 0;
 		{
 			toptobottom(heada, 2, stack);
 			toptobottom(headb, 2, stack);
-			printf("rr\n");
+			ft_putstr("rr\n");
 		} else if ( (j == 0 || i == 0) && (tmp)->value > (*delimiter)->value && ((*delimiter)->prev == NULL || (tmp)->value     <= (*delimiter)->prev->value))
 		{
 			tmp = tmp->prev;
