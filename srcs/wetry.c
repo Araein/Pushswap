@@ -93,12 +93,10 @@ void	chungus( stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del
 {
 	stack1_t		*tmp;
 	int			i;
-	int			choose;
 	int 			j;
 
 	i = 0;
 	j = 0;
-	choose = 0;
 	tmp = *heada;
 
 	while (tmp->next != NULL)
