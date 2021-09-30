@@ -95,9 +95,7 @@ void	chungus( stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del
 	int			i;
 	int			choose;
 	int 			j;
-	int			d;
 
-	d = 0;
 	i = 0;
 	j = 0;
 	choose = 0;
