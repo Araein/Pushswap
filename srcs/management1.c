@@ -12,7 +12,7 @@ void	freelist(stack1_t *head)
        free(tmp);
     }
 }
-/*
+
 void printlist (stack1_t *head)
 {
 	stack1_t *tmp;
@@ -24,7 +24,7 @@ void printlist (stack1_t *head)
 		tmp = tmp->next;
 	}
 }
-*/
+
 
 
 stack1_t *createnode (int value)

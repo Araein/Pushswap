@@ -94,7 +94,7 @@ int main (int argc, char **argv)
 	if (stack.size == 3)
 		triplechar(&heada, &stack);
 	else if (stack.size < 6)
-	   fivechar(&heada, &headb, stack.size, &stack);	
+		fivechar(&heada, &headb, stack.size, &stack);	
 	else
 	{		
 		sortstack(&sorted, &stack);
@@ -102,6 +102,11 @@ int main (int argc, char **argv)
 			stack.one = 5;
 		dealwithmore(&heada, &headb, &stack);	
 	}
+/*	printf("\n");
+	printlist(heada);
+	printf("\n b === \n");
+	printlist(headb);
+*/
 	freelist(stack.sorted);
 	freelist(heada);
 	return (0);
