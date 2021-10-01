@@ -36,20 +36,69 @@ stack1_t *createnode (int value)
 	return (result);
 }
 
+int	tablen(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i] != NULL)
+		i++;
+//	printf("\ni = %d", i);
+
+	return (i);
+
+}
+
+void	freetab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i] != NULL)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
 stack1_t *generatestack(int argc, char **argv)
 {
 
 	stack1_t *head;
 	stack1_t *tmp;
+	char	**splited;
 	int j;
+	int d;
 
-	
-
-
-
-
+	d = 0;
 
 	head = NULL;
+	/*split dernier argv dans splited*/
+	/*mettre le contenu de splited en partant de la fin dans la liste*/
+	/*free splited*/
+	/*repeat*/
+//	printf("coucou");
+	while (argc > 1)
+	{
+		//dernier argv = argv[argc - 1]
+		splited = ft_split(argv[argc - 1], ' ');
+		j = tablen(splited);
+	while (j >= 1)
+        {
+//		printf("wsh");
+                tmp = createnode(ft_atoi(splited[j - 1]));
+                tmp->next = head;
+                if (d > 0)
+                        head->prev = tmp;
+                head = tmp;
+                j--;
+		d++;
+        }
+		freetab(splited);
+		argc--;
+	}
+/*	head = NULL;
 	j = argc; 
 
 	while (argc > 1)
@@ -60,7 +109,8 @@ stack1_t *generatestack(int argc, char **argv)
 			head->prev = tmp;
 		head = tmp;
 		argc--;
-	}
+	}*/
+//	printlist(head);
 	return (head);
 }
 
