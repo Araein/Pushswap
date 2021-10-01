@@ -35,6 +35,10 @@ int	sortstack( stack1_t **head, t_stack *stack)
         *head = (*head)->next;
     }
 	*head = keep;
+	
+	//printf("\nsorted = \n");
+	//printlist(*head);
+
 	stack->sorted = *head;
 
 	return (1);

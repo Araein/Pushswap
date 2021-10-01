@@ -1,6 +1,6 @@
 #include "Pushswap.h"
 
-stack1_t	*listit(t_stack *stack, int size) //cree une lsite chainee contenant les splits 
+stack1_t	*listit(t_stack *stack, int size)
 {
 	stack1_t	*tmp;
 	stack1_t	*ref;
@@ -8,20 +8,21 @@ stack1_t	*listit(t_stack *stack, int size) //cree une lsite chainee contenant le
 	int		i;
 	int		j;
 
-	j = 0;
 	stack->value = stack->size / size;
 	stack->therest = stack->size % size; 
 	i = 0;
 	ref = stack->sorted;
-
+//	printf("\nwsh\n");
 	while (i < size - 1)
-        {                
+        {
+	//	printf("\ni = %d value = %d size = %d\n", i, stack->value, size);
 		j = 0;
-		while (j < stack->value)
+		while (j < stack->value)// && ref != NULL)
 		{
 			j++;
 			ref = ref->next;
 		}
+//		printf("\neeee\n");
 		if (i == 0)
 			head = createnode(ref->value);
 		else
@@ -31,10 +32,13 @@ stack1_t	*listit(t_stack *stack, int size) //cree une lsite chainee contenant le
 			tmp->prev = head;
 			head = head->next;
 			head->next = NULL;
-		 }		
+		 }
+	//	printf("\ntest = %d\n", i);
+		
 		i++;
 
         }
+//	printf("\ncoucou_\n");
 	head->next = NULL;
 	while (head->prev != NULL)
 		head = head->prev;
@@ -143,9 +147,9 @@ void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	
 //	stack->one = 11;
 	i = 0;
-	delimiter = listit(stack, stack->one);   
+	delimiter = listit(stack, stack->one);
 	tmp = delimiter;
-    tmp2 = delimiter;
+  	tmp2 = delimiter;
 	while(tmp->next != NULL)
 		tmp = tmp->next;
 	stack->keep = 0;
@@ -157,8 +161,8 @@ void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
 		i++;
 	}
 	lastchungus(heada, headb, stack, &tmp);
-
-	freelist(tmp2);
+	
+	freelist(&tmp2);  //delimiter est jamais free
 	/*freedelimiter*/
 }
 

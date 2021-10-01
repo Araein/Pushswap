@@ -22,7 +22,7 @@ typedef struct  s_stack
 	int			thirdquart;
 	int			therest;
 	int			value;
-		
+	int			error;		
 	int	one;
 	
 	/*int	two;
@@ -54,7 +54,7 @@ typedef struct  s_stack
 /*ajouter structure avec nombre d'actions effectuees et taille de liste?*/
 void printlist (stack1_t *head);
 stack1_t *createnode (int value);
-stack1_t *generatestack(int argc, char **argv);
+stack1_t *generatestack(int argc, char **argv, t_stack *stack);
 stack1_t *swapfirst(stack1_t **head, int boo, t_stack *stack);
 void givenode( stack1_t **head,  stack1_t **head2, int boo, t_stack *stack);
 int countelem (stack1_t *head);
@@ -63,7 +63,7 @@ void bottomtotop(stack1_t **head, int boo, t_stack *stack);
 void triplechar(stack1_t **head, t_stack *stack);
 void firsttinier (stack1_t **head, t_stack *stack);
 void firstbigger (stack1_t **head, t_stack *stack);
-int ft_atoi(const char *str);
+long			 ft_atoi(const char *str);
 void fivechar(stack1_t **head, stack1_t **head2, int size, t_stack *stack);
 
 void stacked(stack1_t **head, stack1_t **head2, t_stack *stack);
@@ -74,7 +74,7 @@ int		decidewhofirst (stack1_t **head, t_stack *stack, int i);
 void	flipit (stack1_t **headb, stack1_t **heada, t_stack *stack, int choose);
 
 void	stackedbis(stack1_t **heada, stack1_t **headb, t_stack *stack);
-void	freelist(stack1_t *head);
+void	freelist(stack1_t **head);
 
 void bigstack(stack1_t **head, stack1_t **head2, t_stack *stack);
 void bigstack2(stack1_t **head, stack1_t **head2, t_stack *stack);

@@ -20,11 +20,8 @@ void firstbigger (stack1_t **head, t_stack *stack)
 {
 		if ((*head)->next->value > (*head)->next->next->value)
 		{
-			//		printlist(*head);
-		swapfirst(head, 0, stack);
-			//	printlist(*head);
+			swapfirst(head, 0, stack);
 			bottomtotop(head, 0, stack);
-//			printlist(*head);
 			return ;
 		}
 		if ((*head)->value < (*head)->next->next->value)

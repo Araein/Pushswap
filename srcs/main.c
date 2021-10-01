@@ -21,7 +21,7 @@ void	ft_putstr(char const *s)
 }
 
 
-int		ft_atoi(const char *str)
+long		ft_atoi(const char *str)
 {
 	int signe;
 	int i;
@@ -54,6 +54,17 @@ int main (int argc, char **argv)
 	stack1_t	*sorted;
 	t_stack		stack;
 
+
+
+	stack.value = 0;
+	stack.size = 0;
+	stack.therest = 0;
+	stack.sorted = NULL;
+
+
+//que des int condition marche pas avec un seul bail et de sptis trucs
+
+
 	/*checker si cest aue des int, si ya pa de double si cest pas vide si ya pas de charac non desires*/
 	/*segfault sur 2 chara*/
 	/*boucle infinie sur 5 2 4 8 6 4 -9 1*/
@@ -66,24 +77,39 @@ int main (int argc, char **argv)
 	//check si liste est deja classee
 
 	headb = NULL;
+	heada = NULL;
 	if (argv[1] == NULL)
 		return (0);
 
-	/*
-	 * char **args;
-	 * args = doargs (argc, argv);
-	*/
+	stack.error = 0;
+	heada = generatestack(argc, argv, &stack);
+	if (stack.error == 1)
+	{
+		ft_putstr("Error");
+		freelist(&heada);
+		return (0);
+	}
+	
+	sorted = generatestack(argc, argv, &stack);
+	
+	//printlist(sorted);
 
-	heada = generatestack(argc, argv);
-	sorted = generatestack(argc, argv);
+
 	stack.size = countelem(heada);
 
-	if (stack.size < 1)
+	if (stack.size <= 1)
+	{
+		freelist(&heada);
+		freelist(&sorted);
 		return (0);
+	}
 	if (stack.size == 2)
 	{
 		if ((*heada).value > (*heada).next->value)
 			swapfirst(&heada, 0, &stack);
+		freelist(&heada);
+                freelist(&sorted);
+
 		return (0);
 	}
 	stack.operation = 0;
@@ -98,6 +124,7 @@ int main (int argc, char **argv)
 	else
 	{		
 		sortstack(&sorted, &stack);
+//		printlist(stack.sorted);
 		if (stack.size < 201)
 			stack.one = 5;
 		dealwithmore(&heada, &headb, &stack);	
@@ -107,7 +134,8 @@ int main (int argc, char **argv)
 	printf("\n b === \n");
 	printlist(headb);
 */
-	freelist(stack.sorted);
-	freelist(heada);
+	freelist(&sorted);
+	freelist(&heada);
+//	freelist(heada);
 	return (0);
 }

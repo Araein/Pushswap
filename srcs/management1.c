@@ -1,14 +1,16 @@
 #include "Pushswap.h"
 
 
-void	freelist(stack1_t *head)
+void	freelist(stack1_t **head)
 {
-   stack1_t *tmp;
+	stack1_t *tmp;
 
-   while (head != NULL)
+	while ((*head)->prev != NULL)
+		*head = (*head)->prev;
+   while (*head != NULL)
     {
-       tmp = head;
-       head = head->next;
+       tmp = *head;
+       *head = (*head)->next;
        free(tmp);
     }
 }
@@ -62,7 +64,24 @@ void	freetab(char **tab)
 	free(tab);
 }
 
-stack1_t *generatestack(int argc, char **argv)
+
+int	ft_isdigit(char *nb)
+{
+	int	i;
+
+	i = 0;
+	if (nb[0] == '-')
+		i++;
+	while (nb[i])
+	{
+		if (nb[i] < '0' || nb[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+stack1_t *generatestack(int argc, char **argv, t_stack *stack)
 {
 
 	stack1_t *head;
@@ -74,20 +93,23 @@ stack1_t *generatestack(int argc, char **argv)
 	d = 0;
 
 	head = NULL;
-	/*split dernier argv dans splited*/
-	/*mettre le contenu de splited en partant de la fin dans la liste*/
-	/*free splited*/
-	/*repeat*/
-//	printf("coucou");
 	while (argc > 1)
 	{
-		//dernier argv = argv[argc - 1]
 		splited = ft_split(argv[argc - 1], ' ');
 		j = tablen(splited);
 	while (j >= 1)
         {
-//		printf("wsh");
-                tmp = createnode(ft_atoi(splited[j - 1]));
+		if (!(ft_isdigit(splited[j - 1])))
+			stack->error = 1;	
+		if (stack->error == 0 && (ft_atoi(splited[j - 1]) > 2147483647 || ft_atoi(splited[j - 1]) < -2147483648))
+			stack->error = 1;
+		if (stack->error == 1)
+		{
+			freetab(splited);
+			return (head);
+		}
+	//	stack->one = 0;
+		tmp = createnode(ft_atoi(splited[j - 1]));
                 tmp->next = head;
                 if (d > 0)
                         head->prev = tmp;
@@ -98,19 +120,6 @@ stack1_t *generatestack(int argc, char **argv)
 		freetab(splited);
 		argc--;
 	}
-/*	head = NULL;
-	j = argc; 
-
-	while (argc > 1)
-	{
-		tmp = createnode(ft_atoi(argv[argc - 1]));
-		tmp->next = head;
-		if (argc < j)
-			head->prev = tmp;
-		head = tmp;
-		argc--;
-	}*/
-//	printlist(head);
 	return (head);
 }
 
