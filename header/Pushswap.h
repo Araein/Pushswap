@@ -63,7 +63,7 @@ void bottomtotop(stack1_t **head, int boo, t_stack *stack);
 void triplechar(stack1_t **head, t_stack *stack);
 void firsttinier (stack1_t **head, t_stack *stack);
 void firstbigger (stack1_t **head, t_stack *stack);
-long			 ft_atoi(const char *str);
+long long			 ft_atoi(const char *str);
 void fivechar(stack1_t **head, stack1_t **head2, int size, t_stack *stack);
 
 void stacked(stack1_t **head, stack1_t **head2, t_stack *stack);

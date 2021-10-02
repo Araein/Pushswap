@@ -101,6 +101,13 @@ stack1_t *generatestack(int argc, char **argv, t_stack *stack)
         {
 		if (!(ft_isdigit(splited[j - 1])))
 			stack->error = 1;	
+	
+	      	if (stack->error == 1)
+                {
+                        freetab(splited);
+                        return (head);
+                }
+
 		if (stack->error == 0 && (ft_atoi(splited[j - 1]) > 2147483647 || ft_atoi(splited[j - 1]) < -2147483648))
 			stack->error = 1;
 		if (stack->error == 1)

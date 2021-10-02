@@ -21,11 +21,11 @@ void	ft_putstr(char const *s)
 }
 
 
-long		ft_atoi(const char *str)
+long long		ft_atoi(const char *str)
 {
-	int signe;
-	int i;
-	int num;
+	long long signe;
+	long long i;
+	long long num;
 
 	i = 0;
 	signe = 1;
@@ -44,6 +44,10 @@ long		ft_atoi(const char *str)
 		num = num * 10 + (str[i] - 48);
 		i++;
 	}
+//	i = num * signe;
+//	printf("je suis i  = %ld ", i);
+//	if (num * signe > 2147483647 || (num * signe) < -2147483648)
+	//	printf("oof");//return (0);
 	return (num * signe);
 }
 
@@ -63,7 +67,7 @@ int main (int argc, char **argv)
 
 
 //que des int condition marche pas avec un seul bail et de sptis trucs
-
+// " " combiné fonctionne pas :(
 
 	/*checker si cest aue des int, si ya pa de double si cest pas vide si ya pas de charac non desires*/
 	/*segfault sur 2 chara*/
@@ -86,7 +90,9 @@ int main (int argc, char **argv)
 	if (stack.error == 1)
 	{
 		ft_putstr("Error");
-		freelist(&heada);
+		
+		if (heada)
+			freelist(&heada);
 		return (0);
 	}
 	
