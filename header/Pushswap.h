@@ -80,10 +80,6 @@ void bigstack(stack1_t **head, stack1_t **head2, t_stack *stack);
 void bigstack2(stack1_t **head, stack1_t **head2, t_stack *stack);
 void bigstack3(stack1_t **head, stack1_t **head2, t_stack *stack);
 void bigstack4(stack1_t **head, stack1_t **head2, t_stack *stack);
-
-//static int		numstring(char const *s1, char c);
-//static int		sl(char const *s2, char c, int i);
-//static char		**affect(char const *s, char **dst, char c, int p);
 char			**ft_split(char const *s, char c);
 
 stack1_t        *listit(t_stack *stack, int size);

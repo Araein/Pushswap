@@ -20,7 +20,6 @@ void	ft_putstr(char const *s)
 	}
 }
 
-
 long long		ft_atoi(const char *str)
 {
 	long long signe;
@@ -88,22 +87,6 @@ int main (int argc, char **argv)
 	stack.size = 0;
 	stack.therest = 0;
 	stack.sorted = NULL;
-
-
-//que des int condition marche pas avec un seul bail et de sptis trucs
-// " " combiné fonctionne pas :(
-
-	/*checker si cest aue des int, si ya pa de double si cest pas vide si ya pas de charac non desires*/
-	/*segfault sur 2 chara*/
-	/*boucle infinie sur 5 2 4 8 6 4 -9 1*/
-						/*4 65 7 21 3*/
-						/*5 4 2 6 3*/
-						/*2 3 1 4 0*/
-	/*checksi tout est un integer*/
-	/*LEAKS*/
-
-	//check si liste est deja classee
-
 	headb = NULL;
 	heada = NULL;
 	if (argv[1] == NULL)
@@ -115,15 +98,12 @@ int main (int argc, char **argv)
 	if (stack.error == 1)
 	{
 		ft_putstr("Error");
-		
 		if (heada)
 			freelist(&heada);
 		return (0);
 	}
-	
 	sorted = generatestack(argc, argv, &stack);
 	stack.size = countelem(heada);
-
 	if (stack.size <= 1)
 	{
 		freelist(&heada);
@@ -136,13 +116,9 @@ int main (int argc, char **argv)
 			swapfirst(&heada, 0, &stack);
 		freelist(&heada);
                 freelist(&sorted);
-
 		return (0);
 	}
 	stack.operation = 0;
-	
-//	GERER DOUBLONS ///// NOMBRE UNIQUE ///// DUO DE NOMBRE // charac non demandes // REGLER PUTAIN DE FIRSTSWAP
-
 	stack.one = 11;
 	if (stack.size == 3)
 		triplechar(&heada, &stack);
@@ -155,11 +131,6 @@ int main (int argc, char **argv)
 			stack.one = 5;
 		dealwithmore(&heada, &headb, &stack);	
 	}
-/*	printf("\n");
-	printlist(heada);
-	printf("\n b === \n");
-	printlist(headb);
-*/
 	freelist(&sorted);
 	freelist(&heada);
 	return (0);
