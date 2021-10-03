@@ -44,12 +44,36 @@ long long		ft_atoi(const char *str)
 		num = num * 10 + (str[i] - 48);
 		i++;
 	}
-//	i = num * signe;
-//	printf("je suis i  = %ld ", i);
-//	if (num * signe > 2147483647 || (num * signe) < -2147483648)
-	//	printf("oof");//return (0);
 	return (num * signe);
 }
+
+void	checkdoublon(stack1_t **head, t_stack *stack)
+{
+	int		i;
+	stack1_t	*tmp;
+	stack1_t	*tmp2;
+	int		d;
+
+	d = 0;
+	tmp = *head;
+	while (tmp != NULL && stack->error != 1)
+	{	
+		i = tmp->value;	
+		tmp2 = *head;
+		d = 0;
+		while (tmp2 != NULL)
+		{
+			if (tmp2->value == i)
+				d++;			
+			tmp2 = tmp2->next;
+		}
+		if (d > 1)
+			stack->error = 1;
+		tmp = tmp->next;
+	}
+	return ;
+}	
+
 
 int main (int argc, char **argv)
 {
@@ -87,6 +111,7 @@ int main (int argc, char **argv)
 
 	stack.error = 0;
 	heada = generatestack(argc, argv, &stack);
+	checkdoublon(&heada, &stack);
 	if (stack.error == 1)
 	{
 		ft_putstr("Error");
@@ -97,10 +122,6 @@ int main (int argc, char **argv)
 	}
 	
 	sorted = generatestack(argc, argv, &stack);
-	
-	//printlist(sorted);
-
-
 	stack.size = countelem(heada);
 
 	if (stack.size <= 1)
@@ -130,7 +151,6 @@ int main (int argc, char **argv)
 	else
 	{		
 		sortstack(&sorted, &stack);
-//		printlist(stack.sorted);
 		if (stack.size < 201)
 			stack.one = 5;
 		dealwithmore(&heada, &headb, &stack);	
@@ -142,6 +162,5 @@ int main (int argc, char **argv)
 */
 	freelist(&sorted);
 	freelist(&heada);
-//	freelist(heada);
 	return (0);
 }

@@ -91,5 +91,6 @@ void    dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack);
 void    chungus(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **delimiter);
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);
+void    checkdoublon(stack1_t **head, t_stack *stack);
 
 #endif
