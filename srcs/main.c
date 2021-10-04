@@ -102,6 +102,7 @@ void	init(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	*heada = NULL;
 	stack->operation = 0;
 	stack->one = 11;
+	stack->j = 0;
 }
 
 int	launchit(stack1_t **ha, stack1_t **hb, stack1_t **sorted, t_stack *stack)

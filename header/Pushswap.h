@@ -23,28 +23,11 @@ typedef struct  s_stack
 	int			therest;
 	int			value;
 	int			error;		
-	int	one;
-	
-	/*int	two;
-	int	three;
-	int	four;
-	int	five;
-	int	six;
-	int	seven;
-	int	eight;
-	int	nine;
-	int	ten;
-	int	eleven;
-*/	
-	
-	
-	
-	
-	
-	
+	int			one;	
 	int			direction;
 	int			operation;
 	int			keep;
+	int			j;
 	stack1_t	*sorted;
 	stack1_t	*higher;
 	stack1_t	*lower;
@@ -89,4 +72,10 @@ void	ft_putchar(char c);
 void	ft_putstr(char const *s);
 void    checkdoublon(stack1_t **head, t_stack *stack);
 
+int		littlenum(stack1_t **heada, stack1_t **sorted, t_stack *stack);
+void	init(stack1_t **heada, stack1_t **headb, t_stack *stack);
+int		launchit(stack1_t **heada, stack1_t **headb, stack1_t **sorted, t_stack *stack);
+stack1_t	*error(char **splited, stack1_t *head);
+void		checkerror(char **splited, int j, t_stack *stack);
+void		finalstep(stack1_t **head, stack1_t **tmp, t_stack *stack);
 #endif
