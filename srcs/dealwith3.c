@@ -1,49 +1,48 @@
-
 #include "Pushswap.h"
 
-void firsttinier (stack1_t **head, t_stack *stack)
+void	firsttinier(stack1_t **head, t_stack *stack)
 {
-	
-		if ((*head)->next->value < (*head)->next->next->value)
-			return ;
-		if ((*head)->value > (*head)->next->next->value)
-		{
-			bottomtotop(head, 0, stack);
-			return ;
-		} else
+	if ((*head)->next->value < (*head)->next->next->value)
+		return ;
+	if ((*head)->value > (*head)->next->next->value)
+	{
+		bottomtotop(head, 0, stack);
+		return ;
+	}
+	else
 		swapfirst(head, 0, stack);
-		toptobottom(head, 0, stack);
-		return ;
+	toptobottom(head, 0, stack);
+	return ;
 }
 
-void firstbigger (stack1_t **head, t_stack *stack)
+void	firstbigger(stack1_t **head, t_stack *stack)
 {
-		if ((*head)->next->value > (*head)->next->next->value)
-		{
-			swapfirst(head, 0, stack);
-			bottomtotop(head, 0, stack);
-			return ;
-		}
-		if ((*head)->value < (*head)->next->next->value)
-		{
-			swapfirst(head, 0, stack);
-			return ;
-		} else
-		toptobottom(head, 0, stack);
+	if ((*head)->next->value > (*head)->next->next->value)
+	{
+		swapfirst(head, 0, stack);
+		bottomtotop(head, 0, stack);
 		return ;
+	}
+	if ((*head)->value < (*head)->next->next->value)
+	{
+		swapfirst(head, 0, stack);
+		return ;
+	}
+	else
+		toptobottom(head, 0, stack);
+	return ;
 }
 
-void triplechar(stack1_t **head, t_stack *stack)
+void	triplechar(stack1_t **head, t_stack *stack)
 {
 	if ((*head)->value < (*head)->next->value)
 	{
-		firsttinier (head,stack);
+		firsttinier(head, stack);
 		return ;
-	}	
-	
+	}		
 	if ((*head)->value > (*head)->next->value)
 	{
-		firstbigger (head, stack);
+		firstbigger(head, stack);
 		return ;
 	}
 }

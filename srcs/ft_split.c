@@ -1,6 +1,6 @@
 #include "Pushswap.h"
 
-static int		numstring(char const *s1, char c)
+static int	numstring(char const *s1, char c)
 {
 	int	num;
 	int	rep;
@@ -23,7 +23,7 @@ static int		numstring(char const *s1, char c)
 	return (num);
 }
 
-static int		sl(char const *s2, char c, int i)
+static int	sl(char const *s2, char c, int i)
 {
 	int	lenght;
 
@@ -36,7 +36,7 @@ static int		sl(char const *s2, char c, int i)
 	return (lenght);
 }
 
-static char		**affect(char const *s, char **dst, char c, int p)
+static char	**affect(char const *s, char **dst, char c, int p)
 {
 	int	i;
 	int	j;
@@ -49,7 +49,8 @@ static char		**affect(char const *s, char **dst, char c, int p)
 		k = 0;
 		while (s[i] == c)
 			i++;
-		if (!(dst[j] = (char *)malloc(sizeof(char) * (sl(s, c, i) + 1))))
+		dst[j] = (char *)malloc(sizeof(char) * (sl(s, c, i) + 1));
+		if (!(dst[j]))
 			return (NULL);
 		while (s[i] != '\0' && s[i] != c)
 			dst[j][k++] = s[i++];
@@ -60,7 +61,7 @@ static char		**affect(char const *s, char **dst, char c, int p)
 	return (dst);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**dst;
 	int		p;
@@ -68,7 +69,8 @@ char			**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	p = numstring(s, c);
-	if (!(dst = (char **)malloc(sizeof(char *) * (p + 1))))
+	dst = (char **)malloc(sizeof(char *) * (p + 1));
+	if (!dst)
 		return (NULL);
 	return (affect(s, dst, c, p));
 }
