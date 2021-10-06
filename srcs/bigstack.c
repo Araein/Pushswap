@@ -1,6 +1,6 @@
 #include "Pushswap.h"
 
-
+/*
 void	bigstack4(stack1_t **heada, stack1_t **headb, t_stack *stack)
 {
 	int i;
@@ -167,4 +167,4 @@ void	bigstack(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	bigstack2(heada, headb, stack);
 	bigstack3(heada, headb, stack);
 	bigstack4(heada, headb, stack);
-}
+}*/
