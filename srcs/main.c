@@ -6,7 +6,7 @@
 /*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 22:04:27 by tlebouvi          #+#    #+#             */
-/*   Updated: 2021/10/07 22:04:29 by tlebouvi         ###   ########.fr       */
+/*   Updated: 2021/10/07 23:46:19 by tlebouvi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,15 @@ void	init(stack1_t **heada, stack1_t **headb, t_stack *stack)
 
 int	launchit(stack1_t **ha, stack1_t **hb, stack1_t **sorted, t_stack *stack)
 {
+	int	size;
+
+	size = 0;
+	if (stack->size == 5)
+		size = 1;
 	if (stack->size == 3)
 		triplechar(ha, stack);
 	else if (stack->size < 6)
-		fivechar(ha, hb, stack->size, stack);
+		fivechar(ha, hb, size, stack);
 	else
 	{		
 		sortstack(sorted, stack);

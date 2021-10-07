@@ -28,10 +28,11 @@ typedef struct  s_stack
 	int			operation;
 	int			keep;
 	int			j;
-	//int			i;
+//	int			n;
 	stack1_t	*sorted;
 	stack1_t	*higher;
 	stack1_t	*lower;
+	//stack1_t	*tmp;
 }				t_stack;
 
 
