@@ -95,14 +95,28 @@ void	botopfunc(stack1_t *tmp, stack1_t **ha, t_stack *stack)
 	bottomtotop(ha, 0, stack);
 }
 
+void	gf(stack1_t **ha, stack1_t **hb, t_stack *stack)
+{
+	givenode(ha, hb, 1, stack);
+	stack->keep++;
+}
+
+stack1_t	*reinit(stack1_t **ha, t_stack *stack)
+{
+	stack1_t	*tmp;
+
+	stack->j = 0;
+	tmp = *ha;
+	return (tmp);
+}
+
 void	chungus( stack1_t **ha, stack1_t **hb, t_stack *stack, stack1_t **del)
 {
 	stack1_t	*tmp;
 	int			i;
 
+	tmp = reinit (ha, stack);
 	i = 0;
-	stack->j = 0;
-	tmp = *ha;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	while (i < stack->size / stack->one)
@@ -110,9 +124,8 @@ void	chungus( stack1_t **ha, stack1_t **hb, t_stack *stack, stack1_t **del)
 		if ((*ha)->value > (*del)->value
 			&& ((*del)->prev == NULL || (*ha)->value <= (*del)->prev->value))
 		{
-			givenode(ha, hb, 1, stack);
+			gf(ha, hb, stack);
 			i++;
-			stack->keep++;
 		}
 		else if (i > 1 && (*hb)->value < (*hb)->next->value)
 			rrfunc(ha, hb, stack);
