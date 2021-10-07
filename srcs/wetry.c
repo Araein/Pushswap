@@ -38,6 +38,13 @@ stack1_t	*listit(t_stack *stack, int size)
 	return (head);
 }
 
+void	rrfunc(stack1_t	**heada, stack1_t **headb, t_stack *stack)
+{
+	toptobottom(heada, 2, stack);
+	toptobottom(headb, 2, stack);
+	ft_putstr("rr\n");
+}
+
 void	tril(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del)
 {
 	stack1_t	*tmp;
@@ -52,11 +59,7 @@ void	tril(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del)
 		if ((*heada)->value <= (*del)->value)
 			givenode(heada, headb, 1, stack);
 		else if (i > 1 && (*headb)->value < (*headb)->next->value)
-		{
-			toptobottom(heada, 2, stack);
-			toptobottom(headb, 2, stack);
-			ft_putstr("rr\n");
-		}
+			rrfunc(heada, headb, stack);
 		else if ((stack->j == 0 || i == 0) && tmp->value <= (*del)->value)
 		{
 			tmp = tmp->prev;
@@ -72,8 +75,7 @@ void	last(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del)
 {
 	int			i;
 	int			choose;
-	
-//	stack->i = -1;
+
 	stack->j = 0;
 	tril(heada, headb, stack, del);
 	i = countelem(*headb);
@@ -87,46 +89,41 @@ void	last(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del)
 	givenode(headb, heada, 0, stack);
 }
 
-void	chungus( stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **delimiter)
+void	botopfunc(stack1_t *tmp, stack1_t **ha, t_stack *stack)
+{
+	tmp = tmp->prev;
+	bottomtotop(ha, 0, stack);
+}
+
+void	chungus( stack1_t **ha, stack1_t **hb, t_stack *stack, stack1_t **del)
 {
 	stack1_t	*tmp;
 	int			i;
-	int			j;
 
 	i = 0;
-	j = 0;
-	tmp = *heada;
+	stack->j = 0;
+	tmp = *ha;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	while (i < stack->size / stack->one)
 	{
-		if ((*heada)->value > (*delimiter)->value
-			&& ((*delimiter)->prev == NULL
-				|| (*heada)->value <= (*delimiter)->prev->value))
+		if ((*ha)->value > (*del)->value
+			&& ((*del)->prev == NULL || (*ha)->value <= (*del)->prev->value))
 		{
-			givenode(heada, headb, 1, stack);
+			givenode(ha, hb, 1, stack);
 			i++;
 			stack->keep++;
 		}
-		else if (i > 1 && (*headb)->value < (*headb)->next->value)
-		{
-			toptobottom(heada, 2, stack);
-			toptobottom(headb, 2, stack);
-			ft_putstr("rr\n");
-		}
-		else if ((j == 0 || i == 0) && (tmp)->value > (*delimiter)->value
-			&& ((*delimiter)->prev == NULL
-				|| (tmp)->value <= (*delimiter)->prev->value))
-		{
-			tmp = tmp->prev;
-			bottomtotop(heada, 0, stack);
-		}
+		else if (i > 1 && (*hb)->value < (*hb)->next->value)
+			rrfunc(ha, hb, stack);
+		else if ((stack->j == 0 || i == 0) && (tmp)->value > (*del)->value
+			&& ((*del)->prev == NULL || (tmp)->value <= (*del)->prev->value))
+			botopfunc(tmp, ha, stack);
 		else
-			toptobottom(heada, 0, stack);
-		j++;
+			toptobottom(ha, 0, stack);
+		stack->j++;
 	}
-	i = countelem(*headb);
-	*delimiter = (*delimiter)->next;
+	*del = (*del)->next;
 }
 
 void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
