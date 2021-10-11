@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Pushswap.h"
-
+/*
 int	justincase(t_linked **head, t_linked *tmp, t_stack *stack)
 {
 	if ((*head)->value > tmp->prev->value
@@ -78,7 +78,7 @@ int	output(t_linked **heada, t_linked *tmp2, t_stack *stack)
 		return (1);
 	return (0);
 }
-
+*/
 int	doesitfit(t_linked **heada, t_linked **headb, int d, t_stack *stack)
 {
 	t_linked	*tmp;
@@ -105,7 +105,7 @@ int	doesitfit(t_linked **heada, t_linked **headb, int d, t_stack *stack)
 	}
 	return (output(heada, tmp2, stack));
 }
-
+/*
 void	movetmp(t_linked **tmp, t_linked **tmp2, t_linked **head)
 {
 	while (*tmp2 != NULL)
@@ -181,7 +181,7 @@ void	botortop(t_linked **head, t_linked **head2, t_stack *stack, int i)
 		givenode(head2, head, 0, stack);
 	}
 }
-
+*/
 void	relou(t_linked *tmp, t_linked *tmp2)
 {
 	tmp = tmp->next;
