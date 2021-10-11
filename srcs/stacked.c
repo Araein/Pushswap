@@ -6,29 +6,11 @@
 /*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 14:44:48 by tlebouvi          #+#    #+#             */
-/*   Updated: 2021/10/11 14:45:58 by tlebouvi         ###   ########.fr       */
+/*   Updated: 2021/10/11 16:23:56 by tlebouvi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Pushswap.h"
-/*
-void	swapthem(t_linked **tmp, int d)
-{
-	int	i;
-
-	if (d == 1 && (*tmp)->value > (*tmp)->next->value)
-	{
-		i = (*tmp)->value;
-		(*tmp)->value = (*tmp)->next->value;
-		(*tmp)->next->value = i;
-	}
-	if (d == 2 && (*tmp)->value > (*tmp)->prev->value)
-	{
-		i = (*tmp)->value;
-		(*tmp)->value = (*tmp)->prev->value;
-		(*tmp)->prev->value = i;
-	}
-}*/
 
 int	sortstack( t_linked **head, t_stack *stack)
 {

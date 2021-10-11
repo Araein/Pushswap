@@ -6,26 +6,11 @@
 /*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 14:43:54 by tlebouvi          #+#    #+#             */
-/*   Updated: 2021/10/11 14:44:28 by tlebouvi         ###   ########.fr       */
+/*   Updated: 2021/10/11 16:23:25 by tlebouvi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Pushswap.h"
-/*
-int	countelem(t_linked *head)
-{
-	int	i;
-
-	if (head == NULL)
-		return (0);
-	i = 1;
-	while (head->next != NULL)
-	{
-		i++;
-		head = head->next;
-	}
-	return (i);
-}*/
 
 void	toptobottom(t_linked **head, int boo, t_stack *stack)
 {

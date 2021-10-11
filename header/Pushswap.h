@@ -6,7 +6,7 @@
 /*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:22:20 by tlebouvi          #+#    #+#             */
-/*   Updated: 2021/10/11 15:22:23 by tlebouvi         ###   ########.fr       */
+/*   Updated: 2021/10/11 16:16:55 by tlebouvi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,31 +81,27 @@ t_linked	*error(char **splited, t_linked *head);
 void		checkerror(char **splited, int j, t_stack *stack);
 void		finalstep(t_linked **head, t_linked **tmp, t_stack *stack);
 void		switchies(int value, t_linked **head);
-
 void		switchies( int value, t_linked **head);
 t_linked	*listit(t_stack *stack, int size);
 void		rrfunc(t_linked	**heada, t_linked **headb, t_stack *stack);
-void		tril(t_linked **heada, t_linked **headb, t_stack *stack, t_linked **del);
-void		last(t_linked **heada, t_linked **headb, t_stack *stack, t_linked **del);
-
-int		tablen(char **tab);
+void		tril(t_linked **ha, t_linked **hb, t_stack *stack, t_linked **del);
+void		last(t_linked **ha, t_linked **hb, t_stack *stack, t_linked **del);
+int			tablen(char **tab);
 void		freetab(char **tab);
-int		ft_isdigit(char *nb);
+int			ft_isdigit(char *nb);
 t_linked	*error(char **splited, t_linked *head);
 void		checkerror(char **splited, int j, t_stack *stack);
-
-int		justincase(t_linked **head, t_linked *tmp, t_stack *stack);
-void		dominmax(t_linked **ha, t_linked *tmp, t_linked *tmp2, t_stack *stack);
-int		doublettob(t_linked **heada, t_stack *stack);
-int		btotorttob(t_linked **heada, t_stack *stack, int i);
-int		output(t_linked **heada, t_linked *tmp2, t_stack *stack);
-
+int			justincase(t_linked **head, t_linked *tmp, t_stack *stack);
+void		dominmax(t_linked **ha, t_linked *tp, t_linked *tp2, t_stack *stk);
+int			doublettob(t_linked **heada, t_stack *stack);
+int			btotorttob(t_linked **heada, t_stack *stack, int i);
+int			output(t_linked **heada, t_linked *tmp2, t_stack *stack);
 void		movetmp(t_linked **tmp, t_linked **tmp2, t_linked **head);
 void		finishthejob(t_linked **head, t_stack *stack);
 void		doj(t_linked **head, t_linked **head2, t_stack *stack, int d);
 void		toptop(t_linked **head, t_linked **head2, t_stack *stack);
 void		botortop(t_linked **head, t_linked **head2, t_stack *stack, int i);
-int		doesitfit(t_linked **heada, t_linked **headb, int d, t_stack *stack);
+int			doesitfit(t_linked **ha, t_linked **hb, int d, t_stack *stack);
 void		swapthem(t_linked **tmp, int d);
 
 #endif
