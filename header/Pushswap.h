@@ -81,4 +81,10 @@ t_linked	*error(char **splited, t_linked *head);
 void		checkerror(char **splited, int j, t_stack *stack);
 void		finalstep(t_linked **head, t_linked **tmp, t_stack *stack);
 void		switchies(int value, t_linked **head);
+
+void		switchies( int value, t_linked **head);
+t_linked	*listit(t_stack *stack, int size);
+void		rrfunc(t_linked	**heada, t_linked **headb, t_stack *stack);
+void		tril(t_linked **heada, t_linked **headb, t_stack *stack, t_linked **del);
+void		last(t_linked **heada, t_linked **headb, t_stack *stack, t_linked **del);
 #endif
