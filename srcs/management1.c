@@ -36,7 +36,7 @@ t_linked	*createnode(int value)
 	result->prev = NULL;
 	return (result);
 }
-
+/*
 int	tablen(char **tab)
 {
 	int	i;
@@ -92,7 +92,7 @@ void	checkerror(char **splited, int j, t_stack *stack)
 			|| ft_atoi(splited[j - 1]) < -2147483648))
 		stack->error = 1;
 }
-
+*/
 void	finalstep(t_linked **head, t_linked **tmp, t_stack *stack)
 {
 	if (stack->operation > 0)
