@@ -94,4 +94,16 @@ int		ft_isdigit(char *nb);
 t_linked	*error(char **splited, t_linked *head);
 void		checkerror(char **splited, int j, t_stack *stack);
 
+int		justincase(t_linked **head, t_linked *tmp, t_stack *stack);
+void		dominmax(t_linked **ha, t_linked *tmp, t_linked *tmp2, t_stack *stack);
+int		doublettob(t_linked **heada, t_stack *stack);
+int		btotorttob(t_linked **heada, t_stack *stack, int i);
+int		output(t_linked **heada, t_linked *tmp2, t_stack *stack);
+
+void		movetmp(t_linked **tmp, t_linked **tmp2, t_linked **head);
+void		finishthejob(t_linked **head, t_stack *stack);
+void		doj(t_linked **head, t_linked **head2, t_stack *stack, int d);
+void		toptop(t_linked **head, t_linked **head2, t_stack *stack);
+void		botortop(t_linked **head, t_linked **head2, t_stack *stack, int i);
+
 #endif
