@@ -15,142 +15,83 @@ int	justincase(stack1_t **head, stack1_t *tmp, t_stack *stack)
 	return (0);
 }
 
-/*void	movetmp(stack1_t *tmp, stack1_t *tmp2, int i)
+void	dominmax(stack1_t **ha, stack1_t *tmp, stack1_t *tmp2, t_stack *stack)
 {
-	if (i == 1)
-	{
-		while (tmp2 != NULL)
-		{
-			if (tmp2->value < tmp->value)
-				tmp = tmp2;
-			tmp2 = tmp2->next;
-		}
-	}
-	if ( i == 2)
-	{
-		while (tmp2 != NULL)
-		{
-			if (tmp2->value > tmp->value)
-				tmp = tmp2;
-			tmp2 = tmp2->next;
-		}
-	}
-}
-
-
-int	doesitfit(stack1_t **heada, stack1_t **headb, int d, t_stack *stack)
-{
-	stack1_t	*tmp;
-	stack1_t	*tmp2;
-	int			min;
-	int			max;
-
-	tmp = *heada;
-	tmp2 = *heada;
-	movetmp(tmp, tmp2, 1);
-	min = tmp->value;
-	tmp = *heada;
-	tmp2 = *heada;
-	movetmp(tmp, tmp2, 2);
-	max = tmp->value;
-	tmp2 = *heada;
-	while (tmp2->next != NULL)
-		tmp2 = tmp2->next;
-	tmp = *heada;
-	if ((*headb)->value > tmp->value && (*headb)->value < tmp->next->value)
-	{
-		toptobottom(heada, 0, stack);
-		return (1);
-	}
-	else if ((*headb)->value < tmp2->value
-		&& (*headb)->value > tmp2->prev->value)
-	{
-		bottomtotop(heada, 0, stack);
-		return (1);
-	}
-	else if (d == 1)
-	{
-		tmp = tmp->next;
-		tmp2 = tmp2->prev;
-		if ((*headb)->value > tmp->value && (*headb)->value < tmp2->value)
-		{
-			toptobottom(heada, 0, stack);
-			toptobottom(heada, 0, stack);
-			return (1);
-		}
-	}
-	tmp2 = *heada;
-	while (tmp2->next != NULL)
-		tmp2 = tmp2->next;
-	tmp = *heada;
-	if ((*heada)->value == max && tmp2->value == min)
-		return (1);
-	if (tmp2->value == max && (*heada)->value == min)
-		return (1);
-	return (0);
-}
-*/
-
-int	doesitfit(stack1_t **heada, stack1_t **headb, int d, t_stack *stack)
-{
-	stack1_t	*tmp;
-	stack1_t	*tmp2;
-	int			min;
-	int			max;
-
-	tmp = *heada;
-	tmp2 = *heada;
 	while (tmp2 != NULL)
 	{
 		if (tmp2->value < tmp->value)
 			tmp = tmp2;
 		tmp2 = tmp2->next;
 	}
-	min = tmp->value;
-	tmp = *heada;
-	tmp2 = *heada;
+	stack->min = tmp->value;
+	tmp = *ha;
+	tmp2 = *ha;
 	while (tmp2 != NULL)
 	{
 		if (tmp2->value > tmp->value)
 			tmp = tmp2;
 		tmp2 = tmp2->next;
 	}
-	max = tmp->value;
+	stack->max = tmp->value;
+	tmp2 = *ha;
+	while (tmp2->next != NULL)
+		tmp2 = tmp2->next;
+	tmp = *ha;
+}
+
+int	doublettob(stack1_t **heada, t_stack *stack)
+{
+	toptobottom(heada, 0, stack);
+	toptobottom(heada, 0, stack);
+	return (1);
+}
+
+int	btotorttob(stack1_t **heada, t_stack *stack, int i)
+{
+	if (i == 1)
+		toptobottom(heada, 0, stack);
+	else
+		bottomtotop(heada, 0, stack);
+	return (1);
+}
+
+int	output(stack1_t **heada, stack1_t *tmp2, t_stack *stack)
+{
+	tmp2 = *heada;
+	while (tmp2->next != NULL)
+		tmp2 = tmp2->next;
+	if ((*heada)->value == stack->max && tmp2->value == stack->min)
+		return (1);
+	if (tmp2->value == stack->max && (*heada)->value == stack->min)
+		return (1);
+	return (0);
+}
+
+int	doesitfit(stack1_t **heada, stack1_t **headb, int d, t_stack *stack)
+{
+	stack1_t	*tmp;
+	stack1_t	*tmp2;
+
+	tmp = *heada;
+	tmp2 = *heada;
+	dominmax(heada, tmp, tmp2, stack);
 	tmp2 = *heada;
 	while (tmp2->next != NULL)
 		tmp2 = tmp2->next;
 	tmp = *heada;
 	if ((*headb)->value > tmp->value && (*headb)->value < tmp->next->value)
-	{
-		toptobottom(heada, 0, stack);
-		return (1);
-	}
+		return (btotorttob(heada, stack, 1));
 	else if ((*headb)->value < tmp2->value
 		&& (*headb)->value > tmp2->prev->value)
-	{
-		bottomtotop(heada, 0, stack);
-		return (1);
-	}
+		return (btotorttob(heada, stack, 2));
 	else if (d == 1)
 	{
 		tmp = tmp->next;
 		tmp2 = tmp2->prev;
 		if ((*headb)->value > tmp->value && (*headb)->value < tmp2->value)
-		{
-			toptobottom(heada, 0, stack);
-			toptobottom(heada, 0, stack);
-			return (1);
-		}
+			return (doublettob(heada, stack));
 	}
-	tmp2 = *heada;
-	while (tmp2->next != NULL)
-		tmp2 = tmp2->next;
-	tmp = *heada;
-	if ((*heada)->value == max && tmp2->value == min)
-		return (1);
-	if (tmp2->value == max && (*heada)->value == min)
-		return (1);
-	return (0);
+	return (output(heada, tmp2, stack));
 }
 
 void	movetmp(stack1_t **tmp, stack1_t **tmp2, stack1_t **head)
