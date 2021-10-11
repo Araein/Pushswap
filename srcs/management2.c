@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Pushswap.h"
-
+/*
 int	countelem(t_linked *head)
 {
 	int	i;
@@ -25,7 +25,7 @@ int	countelem(t_linked *head)
 		head = head->next;
 	}
 	return (i);
-}
+}*/
 
 void	toptobottom(t_linked **head, int boo, t_stack *stack)
 {
