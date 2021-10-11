@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Pushswap.h"
-
+/*
 void	freelist(t_linked **head)
 {
 	t_linked	*tmp;
@@ -24,7 +24,7 @@ void	freelist(t_linked **head)
 		*head = (*head)->next;
 		free(tmp);
 	}
-}
+}*/
 
 t_linked	*createnode(int value)
 {
