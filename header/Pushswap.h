@@ -105,5 +105,7 @@ void		finishthejob(t_linked **head, t_stack *stack);
 void		doj(t_linked **head, t_linked **head2, t_stack *stack, int d);
 void		toptop(t_linked **head, t_linked **head2, t_stack *stack);
 void		botortop(t_linked **head, t_linked **head2, t_stack *stack, int i);
+int		doesitfit(t_linked **heada, t_linked **headb, int d, t_stack *stack);
+
 
 #endif
