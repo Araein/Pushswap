@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dealwith5.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 14:38:53 by tlebouvi          #+#    #+#             */
+/*   Updated: 2021/10/11 14:39:26 by tlebouvi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Pushswap.h"
 
-int	justincase(stack1_t **head, stack1_t *tmp, t_stack *stack)
+int	justincase(t_linked **head, t_linked *tmp, t_stack *stack)
 {
 	if ((*head)->value > tmp->prev->value
 		&& tmp->value < tmp->prev->value
@@ -15,7 +27,7 @@ int	justincase(stack1_t **head, stack1_t *tmp, t_stack *stack)
 	return (0);
 }
 
-void	dominmax(stack1_t **ha, stack1_t *tmp, stack1_t *tmp2, t_stack *stack)
+void	dominmax(t_linked **ha, t_linked *tmp, t_linked *tmp2, t_stack *stack)
 {
 	while (tmp2 != NULL)
 	{
@@ -39,14 +51,14 @@ void	dominmax(stack1_t **ha, stack1_t *tmp, stack1_t *tmp2, t_stack *stack)
 	tmp = *ha;
 }
 
-int	doublettob(stack1_t **heada, t_stack *stack)
+int	doublettob(t_linked **heada, t_stack *stack)
 {
 	toptobottom(heada, 0, stack);
 	toptobottom(heada, 0, stack);
 	return (1);
 }
 
-int	btotorttob(stack1_t **heada, t_stack *stack, int i)
+int	btotorttob(t_linked **heada, t_stack *stack, int i)
 {
 	if (i == 1)
 		toptobottom(heada, 0, stack);
@@ -55,7 +67,7 @@ int	btotorttob(stack1_t **heada, t_stack *stack, int i)
 	return (1);
 }
 
-int	output(stack1_t **heada, stack1_t *tmp2, t_stack *stack)
+int	output(t_linked **heada, t_linked *tmp2, t_stack *stack)
 {
 	tmp2 = *heada;
 	while (tmp2->next != NULL)
@@ -67,10 +79,10 @@ int	output(stack1_t **heada, stack1_t *tmp2, t_stack *stack)
 	return (0);
 }
 
-int	doesitfit(stack1_t **heada, stack1_t **headb, int d, t_stack *stack)
+int	doesitfit(t_linked **heada, t_linked **headb, int d, t_stack *stack)
 {
-	stack1_t	*tmp;
-	stack1_t	*tmp2;
+	t_linked	*tmp;
+	t_linked	*tmp2;
 
 	tmp = *heada;
 	tmp2 = *heada;
@@ -94,7 +106,7 @@ int	doesitfit(stack1_t **heada, stack1_t **headb, int d, t_stack *stack)
 	return (output(heada, tmp2, stack));
 }
 
-void	movetmp(stack1_t **tmp, stack1_t **tmp2, stack1_t **head)
+void	movetmp(t_linked **tmp, t_linked **tmp2, t_linked **head)
 {
 	while (*tmp2 != NULL)
 	{
@@ -105,11 +117,11 @@ void	movetmp(stack1_t **tmp, stack1_t **tmp2, stack1_t **head)
 	*tmp2 = *head;
 }
 
-void	finishthejob(stack1_t **head, t_stack *stack)
+void	finishthejob(t_linked **head, t_stack *stack)
 {
 	int			i;
-	stack1_t	*tmp;
-	stack1_t	*tmp2;
+	t_linked	*tmp;
+	t_linked	*tmp2;
 
 	i = 0;
 	tmp = *head;
@@ -134,7 +146,7 @@ void	finishthejob(stack1_t **head, t_stack *stack)
 	}
 }
 
-void	doj(stack1_t **head, stack1_t **head2, t_stack *stack, int d)
+void	doj(t_linked **head, t_linked **head2, t_stack *stack, int d)
 {
 	int	j;
 
@@ -149,14 +161,14 @@ void	doj(stack1_t **head, stack1_t **head2, t_stack *stack, int d)
 	givenode(head2, head, 0, stack);
 }
 
-void	toptop(stack1_t **head, stack1_t **head2, t_stack *stack)
+void	toptop(t_linked **head, t_linked **head2, t_stack *stack)
 {
 	toptobottom(head, 0, stack);
 	toptobottom(head, 0, stack);
 	givenode(head2, head, 0, stack);
 }
 
-void	botortop(stack1_t **head, stack1_t **head2, t_stack *stack, int i)
+void	botortop(t_linked **head, t_linked **head2, t_stack *stack, int i)
 {
 	if (i == 1)
 	{
@@ -170,13 +182,13 @@ void	botortop(stack1_t **head, stack1_t **head2, t_stack *stack, int i)
 	}
 }
 
-void	relou(stack1_t *tmp, stack1_t *tmp2)
+void	relou(t_linked *tmp, t_linked *tmp2)
 {
 	tmp = tmp->next;
 	tmp2 = tmp2->prev;
 }
 
-int	pretri(stack1_t **head, stack1_t **head2, t_stack *stack)
+int	pretri(t_linked **head, t_linked **head2, t_stack *stack)
 {
 	int	i;
 
@@ -190,16 +202,16 @@ int	pretri(stack1_t **head, stack1_t **head2, t_stack *stack)
 	return (i);
 }
 
-void	resetline(stack1_t **tmp2)
+void	resetline(t_linked **tmp2)
 {
 	while ((*tmp2)->next != NULL)
 		*tmp2 = (*tmp2)->next;
 }
 
-void	fivechar(stack1_t **head, stack1_t **head2, int size, t_stack *stack)
+void	fivechar(t_linked **head, t_linked **head2, int size, t_stack *stack)
 {
-	stack1_t	*tmp2;
-	stack1_t	*tmp;
+	t_linked	*tmp2;
+	t_linked	*tmp;
 	int			i;
 
 	i = pretri(head, head2, stack);

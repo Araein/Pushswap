@@ -6,7 +6,7 @@
 /*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 22:04:27 by tlebouvi          #+#    #+#             */
-/*   Updated: 2021/10/07 23:46:19 by tlebouvi         ###   ########.fr       */
+/*   Updated: 2021/10/11 14:41:30 by tlebouvi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ long long	ft_atoi(const char *str)
 	return (num * signe);
 }
 
-void	checkdoublon(stack1_t **head, t_stack *stack)
+void	checkdoublon(t_linked **head, t_stack *stack)
 {
 	int			i;
-	stack1_t	*tmp;
-	stack1_t	*tmp2;
+	t_linked	*tmp;
+	t_linked	*tmp2;
 	int			d;
 
 	d = 0;
@@ -85,7 +85,7 @@ void	checkdoublon(stack1_t **head, t_stack *stack)
 	return ;
 }
 
-int	littlenum(stack1_t **heada, stack1_t **sorted, t_stack *stack)
+int	littlenum(t_linked **heada, t_linked **sorted, t_stack *stack)
 {
 	if (stack->size <= 1)
 	{
@@ -104,7 +104,7 @@ int	littlenum(stack1_t **heada, stack1_t **sorted, t_stack *stack)
 	return (0);
 }
 
-void	init(stack1_t **heada, stack1_t **headb, t_stack *stack)
+void	init(t_linked **heada, t_linked **headb, t_stack *stack)
 {
 	stack->value = 0;
 	stack->size = 0;
@@ -117,7 +117,7 @@ void	init(stack1_t **heada, stack1_t **headb, t_stack *stack)
 	stack->j = 0;
 }
 
-int	launchit(stack1_t **ha, stack1_t **hb, stack1_t **sorted, t_stack *stack)
+int	launchit(t_linked **ha, t_linked **hb, t_linked **sorted, t_stack *stack)
 {
 	int	size;
 
@@ -142,9 +142,9 @@ int	launchit(stack1_t **ha, stack1_t **hb, stack1_t **sorted, t_stack *stack)
 
 int	main(int argc, char **argv)
 {
-	stack1_t	*heada;
-	stack1_t	*headb;
-	stack1_t	*sorted;
+	t_linked	*heada;
+	t_linked	*headb;
+	t_linked	*sorted;
 	t_stack		stack;
 
 	init(&heada, &headb, &stack);

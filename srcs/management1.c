@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   management1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 14:42:47 by tlebouvi          #+#    #+#             */
+/*   Updated: 2021/10/11 14:43:47 by tlebouvi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Pushswap.h"
 
-void	freelist(stack1_t **head)
+void	freelist(t_linked **head)
 {
-	stack1_t	*tmp;
+	t_linked	*tmp;
 
 	while ((*head)->prev != NULL)
 		*head = (*head)->prev;
@@ -13,23 +25,12 @@ void	freelist(stack1_t **head)
 		free(tmp);
 	}
 }
-//void printlist (stack1_t *head)
-//{
-//	stack1_t *tmp;
-//
-//	tmp = head;
-//	while (tmp != NULL)
-//	{
-//		printf("%d\n", tmp->value);
-//		tmp = tmp->next;
-//	}
-//}
 
-stack1_t	*createnode(int value)
+t_linked	*createnode(int value)
 {
-	stack1_t	*result;
+	t_linked	*result;
 
-	result = malloc(sizeof(stack1_t));
+	result = malloc(sizeof(t_linked));
 	result->value = value;
 	result->next = NULL;
 	result->prev = NULL;
@@ -75,7 +76,7 @@ int	ft_isdigit(char *nb)
 	return (1);
 }
 
-stack1_t	*error(char **splited, stack1_t *head)
+t_linked	*error(char **splited, t_linked *head)
 {
 	freetab(splited);
 	return (head);
@@ -92,7 +93,7 @@ void	checkerror(char **splited, int j, t_stack *stack)
 		stack->error = 1;
 }
 
-void	finalstep(stack1_t **head, stack1_t **tmp, t_stack *stack)
+void	finalstep(t_linked **head, t_linked **tmp, t_stack *stack)
 {
 	if (stack->operation > 0)
 		(*head)->prev = *tmp;
@@ -101,10 +102,10 @@ void	finalstep(stack1_t **head, stack1_t **tmp, t_stack *stack)
 	stack->operation++;
 }
 
-stack1_t	*generatestack(int argc, char **argv, t_stack *stack)
+t_linked	*generatestack(int argc, char **argv, t_stack *stack)
 {
-	stack1_t	*head;
-	stack1_t	*tmp;
+	t_linked	*head;
+	t_linked	*tmp;
 	char		**splited;
 
 	stack->operation = 0;
@@ -128,10 +129,10 @@ stack1_t	*generatestack(int argc, char **argv, t_stack *stack)
 	return (head);
 }
 
-stack1_t	*swapfirst(stack1_t **head, int boo, t_stack *stack)
+t_linked	*swapfirst(t_linked **head, int boo, t_stack *stack)
 {
-	stack1_t	*tmp;
-	stack1_t	*tmp2;
+	t_linked	*tmp;
+	t_linked	*tmp2;
 
 	tmp = *head;
 	tmp2 = (*head)->next;
@@ -152,9 +153,9 @@ stack1_t	*swapfirst(stack1_t **head, int boo, t_stack *stack)
 	return (*head);
 }
 
-void	givenode( stack1_t **head, stack1_t **head2, int boo, t_stack *stack)
+void	givenode( t_linked **head, t_linked **head2, int boo, t_stack *stack)
 {
-	stack1_t	*tmp;
+	t_linked	*tmp;
 
 	if (countelem (*head) == 0)
 		return ;

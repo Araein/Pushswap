@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wetry.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 14:41:38 by tlebouvi          #+#    #+#             */
+/*   Updated: 2021/10/11 14:42:10 by tlebouvi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Pushswap.h"
 
-void	switchies( int value, stack1_t **head)
+void	switchies( int value, t_linked **head)
 {
-	stack1_t	*tmp;
+	t_linked	*tmp;
 
 	tmp = createnode(value);
 	(*head)->next = tmp;
@@ -11,10 +23,10 @@ void	switchies( int value, stack1_t **head)
 	(*head)->next = NULL;
 }
 
-stack1_t	*listit(t_stack *stack, int size)
+t_linked	*listit(t_stack *stack, int size)
 {
-	stack1_t	*ref;
-	stack1_t	*head;
+	t_linked	*ref;
+	t_linked	*head;
 	int			i;
 	int			j;
 
@@ -38,16 +50,16 @@ stack1_t	*listit(t_stack *stack, int size)
 	return (head);
 }
 
-void	rrfunc(stack1_t	**heada, stack1_t **headb, t_stack *stack)
+void	rrfunc(t_linked	**heada, t_linked **headb, t_stack *stack)
 {
 	toptobottom(heada, 2, stack);
 	toptobottom(headb, 2, stack);
 	ft_putstr("rr\n");
 }
 
-void	tril(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del)
+void	tril(t_linked **heada, t_linked **headb, t_stack *stack, t_linked **del)
 {
-	stack1_t	*tmp;
+	t_linked	*tmp;
 	int			i;
 
 	i = -1;
@@ -71,7 +83,7 @@ void	tril(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del)
 	}
 }
 
-void	last(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del)
+void	last(t_linked **heada, t_linked **headb, t_stack *stack, t_linked **del)
 {
 	int			i;
 	int			choose;
@@ -89,30 +101,30 @@ void	last(stack1_t **heada, stack1_t **headb, t_stack *stack, stack1_t **del)
 	givenode(headb, heada, 0, stack);
 }
 
-void	botopfunc(stack1_t *tmp, stack1_t **ha, t_stack *stack)
+void	botopfunc(t_linked *tmp, t_linked **ha, t_stack *stack)
 {
 	tmp = tmp->prev;
 	bottomtotop(ha, 0, stack);
 }
 
-void	gf(stack1_t **ha, stack1_t **hb, t_stack *stack)
+void	gf(t_linked **ha, t_linked **hb, t_stack *stack)
 {
 	givenode(ha, hb, 1, stack);
 	stack->keep++;
 }
 
-stack1_t	*reinit(stack1_t **ha, t_stack *stack)
+t_linked	*reinit(t_linked **ha, t_stack *stack)
 {
-	stack1_t	*tmp;
+	t_linked	*tmp;
 
 	stack->j = 0;
 	tmp = *ha;
 	return (tmp);
 }
 
-void	chungus( stack1_t **ha, stack1_t **hb, t_stack *stack, stack1_t **del)
+void	chungus( t_linked **ha, t_linked **hb, t_stack *stack, t_linked **del)
 {
-	stack1_t	*tmp;
+	t_linked	*tmp;
 	int			i;
 
 	tmp = reinit (ha, stack);
@@ -139,12 +151,12 @@ void	chungus( stack1_t **ha, stack1_t **hb, t_stack *stack, stack1_t **del)
 	*del = (*del)->next;
 }
 
-void	dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack)
+void	dealwithmore(t_linked **heada, t_linked **headb, t_stack *stack)
 {
-	stack1_t	*delimiter;
+	t_linked	*delimiter;
 	int			i;
-	stack1_t	*tmp;
-	stack1_t	*tmp2;
+	t_linked	*tmp;
+	t_linked	*tmp2;
 
 	i = 0;
 	delimiter = listit(stack, stack->one);

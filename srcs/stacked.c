@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/06 04:11:42 by tlebouvi          #+#    #+#             */
-/*   Updated: 2021/10/06 04:55:22 by tlebouvi         ###   ########.fr       */
+/*   Created: 2021/10/11 14:44:48 by tlebouvi          #+#    #+#             */
+/*   Updated: 2021/10/11 14:45:58 by tlebouvi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Pushswap.h"
 
-void	swapthem(stack1_t **tmp, int d)
+void	swapthem(t_linked **tmp, int d)
 {
 	int	i;
 
@@ -30,10 +30,10 @@ void	swapthem(stack1_t **tmp, int d)
 	}
 }
 
-int	sortstack( stack1_t **head, t_stack *stack)
+int	sortstack( t_linked **head, t_stack *stack)
 {
-	stack1_t	*tmp;
-	stack1_t	*keep;
+	t_linked	*tmp;
+	t_linked	*keep;
 
 	keep = *head;
 	while (*head != NULL)
@@ -58,7 +58,7 @@ int	sortstack( stack1_t **head, t_stack *stack)
 
 void	findmedian( t_stack *stack)
 {
-	stack1_t	*tmp;
+	t_linked	*tmp;
 	int			i;
 
 	i = -1;
@@ -84,11 +84,11 @@ void	findmedian( t_stack *stack)
 	stack->thirdquart = tmp->value;
 }
 
-void	findhigherlower( stack1_t **head, t_stack *stack)
+void	findhigherlower( t_linked **head, t_stack *stack)
 {
-	stack1_t	*higher;
-	stack1_t	*lower;
-	stack1_t	*tmp;
+	t_linked	*higher;
+	t_linked	*lower;
+	t_linked	*tmp;
 
 	tmp = *head;
 	higher = *head;
@@ -104,9 +104,9 @@ void	findhigherlower( stack1_t **head, t_stack *stack)
 	*head = tmp;
 }
 
-int	decidewhofirst( stack1_t **head, t_stack *stack, int i)
+int	decidewhofirst( t_linked **head, t_stack *stack, int i)
 {
-	stack1_t	*tmp;
+	t_linked	*tmp;
 	int			middle;
 	int			j;
 	int			ret;
@@ -130,7 +130,7 @@ int	decidewhofirst( stack1_t **head, t_stack *stack, int i)
 	return (ret);
 }
 
-void	flipit( stack1_t **headb, stack1_t **heada, t_stack *stack, int choose)
+void	flipit( t_linked **headb, t_linked **heada, t_stack *stack, int choose)
 {
 	int	i;
 

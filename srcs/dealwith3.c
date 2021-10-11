@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dealwith3.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 14:39:44 by tlebouvi          #+#    #+#             */
+/*   Updated: 2021/10/11 14:40:13 by tlebouvi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Pushswap.h"
 
-void	firsttinier(stack1_t **head, t_stack *stack)
+void	firsttinier(t_linked **head, t_stack *stack)
 {
 	if ((*head)->next->value < (*head)->next->next->value)
 		return ;
@@ -15,7 +27,7 @@ void	firsttinier(stack1_t **head, t_stack *stack)
 	return ;
 }
 
-void	firstbigger(stack1_t **head, t_stack *stack)
+void	firstbigger(t_linked **head, t_stack *stack)
 {
 	if ((*head)->next->value > (*head)->next->next->value)
 	{
@@ -33,7 +45,7 @@ void	firstbigger(stack1_t **head, t_stack *stack)
 	return ;
 }
 
-void	triplechar(stack1_t **head, t_stack *stack)
+void	triplechar(t_linked **head, t_stack *stack)
 {
 	if ((*head)->value < (*head)->next->value)
 	{

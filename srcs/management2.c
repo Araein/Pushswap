@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   management2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 14:43:54 by tlebouvi          #+#    #+#             */
+/*   Updated: 2021/10/11 14:44:28 by tlebouvi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Pushswap.h"
 
-int	countelem(stack1_t *head)
+int	countelem(t_linked *head)
 {
 	int	i;
 
@@ -15,10 +27,10 @@ int	countelem(stack1_t *head)
 	return (i);
 }
 
-void	toptobottom(stack1_t **head, int boo, t_stack *stack)
+void	toptobottom(t_linked **head, int boo, t_stack *stack)
 {
-	stack1_t	*tmp;
-	stack1_t	*tmp2;
+	t_linked	*tmp;
+	t_linked	*tmp2;
 
 	tmp = *head;
 	tmp2 = (*head)->next;
@@ -39,10 +51,10 @@ void	toptobottom(stack1_t **head, int boo, t_stack *stack)
 	stack->operation += 1;
 }
 
-void	bottomtotop(stack1_t **head, int boo, t_stack *stack)
+void	bottomtotop(t_linked **head, int boo, t_stack *stack)
 {
-	stack1_t	*tmp;
-	stack1_t	*tmp2;
+	t_linked	*tmp;
+	t_linked	*tmp2;
 
 	while ((*head)->next != NULL)
 		*head = (*head)->next;

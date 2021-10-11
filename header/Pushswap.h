@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Pushswap.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlebouvi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 15:22:20 by tlebouvi          #+#    #+#             */
+/*   Updated: 2021/10/11 15:22:23 by tlebouvi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
@@ -12,7 +24,7 @@ typedef struct stack1
 	int				value;
 	struct stack1	*next;
 	struct stack1	*prev;
-}			stack1_t;
+}			t_linked;
 
 typedef struct s_stack
 {
@@ -30,43 +42,43 @@ typedef struct s_stack
 	int			j;
 	int			min;
 	int			max;
-	stack1_t	*sorted;
-	stack1_t	*higher;
-	stack1_t	*lower;
+	t_linked	*sorted;
+	t_linked	*higher;
+	t_linked	*lower;
 }				t_stack;
 
-void		printlist(stack1_t *head);
-stack1_t	*createnode(int value);
-stack1_t	*generatestack(int argc, char **argv, t_stack *stack);
-stack1_t	*swapfirst(stack1_t **head, int boo, t_stack *stack);
-void		givenode(stack1_t **head, stack1_t **head2, int boo, t_stack *stk);
-int			countelem(stack1_t *head);
-void		toptobottom(stack1_t **head, int boo, t_stack *stack);
-void		bottomtotop(stack1_t **head, int boo, t_stack *stack);
-void		triplechar(stack1_t **head, t_stack *stack);
-void		firsttinier(stack1_t **head, t_stack *stack);
-void		firstbigger(stack1_t **head, t_stack *stack);
+void		printlist(t_linked *head);
+t_linked	*createnode(int value);
+t_linked	*generatestack(int argc, char **argv, t_stack *stack);
+t_linked	*swapfirst(t_linked **head, int boo, t_stack *stack);
+void		givenode(t_linked **head, t_linked **head2, int boo, t_stack *stk);
+int			countelem(t_linked *head);
+void		toptobottom(t_linked **head, int boo, t_stack *stack);
+void		bottomtotop(t_linked **head, int boo, t_stack *stack);
+void		triplechar(t_linked **head, t_stack *stack);
+void		firsttinier(t_linked **head, t_stack *stack);
+void		firstbigger(t_linked **head, t_stack *stack);
 long long	ft_atoi(const char *str);
-void		fivechar(stack1_t **head, stack1_t **head2, int size, t_stack *stk);
-int			sortstack(stack1_t **head, t_stack *stack);
+void		fivechar(t_linked **head, t_linked **head2, int size, t_stack *stk);
+int			sortstack(t_linked **head, t_stack *stack);
 void		findmedian(t_stack *stack);
-void		findhigherlower(stack1_t **head, t_stack *stack);
-int			decidewhofirst(stack1_t **head, t_stack *stack, int i);
-void		flipit(stack1_t **hb, stack1_t **ha, t_stack *stack, int choose);
-void		freelist(stack1_t **head);
+void		findhigherlower(t_linked **head, t_stack *stack);
+int			decidewhofirst(t_linked **head, t_stack *stack, int i);
+void		flipit(t_linked **hb, t_linked **ha, t_stack *stack, int choose);
+void		freelist(t_linked **head);
 char		**ft_split(char const *s, char c);
-stack1_t	*listit(t_stack *stack, int size);
-void		dealwithmore(stack1_t **heada, stack1_t **headb, t_stack *stack);
-void		chungus(stack1_t **ha, stack1_t **hb, t_stack *stk, stack1_t **del);
-void		last(stack1_t **ha, stack1_t **hb, t_stack *stk, stack1_t **del);
+t_linked	*listit(t_stack *stack, int size);
+void		dealwithmore(t_linked **heada, t_linked **headb, t_stack *stack);
+void		chungus(t_linked **ha, t_linked **hb, t_stack *stk, t_linked **del);
+void		last(t_linked **ha, t_linked **hb, t_stack *stk, t_linked **del);
 void		ft_putchar(char c);
 void		ft_putstr(char const *s);
-void		checkdoublon(stack1_t **head, t_stack *stack);
-int			littlenum(stack1_t **heada, stack1_t **sorted, t_stack *stack);
-void		init(stack1_t **heada, stack1_t **headb, t_stack *stack);
-int			launchit(stack1_t **ha, stack1_t **hb, stack1_t **st, t_stack *stk);
-stack1_t	*error(char **splited, stack1_t *head);
+void		checkdoublon(t_linked **head, t_stack *stack);
+int			littlenum(t_linked **heada, t_linked **sorted, t_stack *stack);
+void		init(t_linked **heada, t_linked **headb, t_stack *stack);
+int			launchit(t_linked **ha, t_linked **hb, t_linked **st, t_stack *stk);
+t_linked	*error(char **splited, t_linked *head);
 void		checkerror(char **splited, int j, t_stack *stack);
-void		finalstep(stack1_t **head, stack1_t **tmp, t_stack *stack);
-void		switchies(int value, stack1_t **head);
+void		finalstep(t_linked **head, t_linked **tmp, t_stack *stack);
+void		switchies(int value, t_linked **head);
 #endif
