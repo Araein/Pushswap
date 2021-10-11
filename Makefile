@@ -1,6 +1,6 @@
 NAME 			= push_swap
 
-SRCS_LIST		= main.c wetry.c wetry2.c management1.c management2.c dealwith3.c dealwith5.c stacked.c ft_split.c utils.c
+SRCS_LIST		= main.c wetry.c wetry2.c management1.c management2.c management3.c dealwith3.c dealwith5.c stacked.c ft_split.c utils.c
 
 FOLDER			= srcs
 
