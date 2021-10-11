@@ -12,7 +12,7 @@
 
 #include "Pushswap.h"
 
-void	switchies( int value, t_linked **head)
+/*void	switchies( int value, t_linked **head)
 {
 	t_linked	*tmp;
 
@@ -99,7 +99,7 @@ void	last(t_linked **heada, t_linked **headb, t_stack *stack, t_linked **del)
 		i--;
 	}
 	givenode(headb, heada, 0, stack);
-}
+}*/
 
 void	botopfunc(t_linked *tmp, t_linked **ha, t_stack *stack)
 {
