@@ -12,7 +12,7 @@
 
 #include "Pushswap.h"
 
-void	ft_putchar(char c)
+/*void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
@@ -56,7 +56,7 @@ long long	ft_atoi(const char *str)
 		i++;
 	}
 	return (num * signe);
-}
+}*/
 
 void	checkdoublon(t_linked **head, t_stack *stack)
 {
