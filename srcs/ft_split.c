@@ -12,6 +12,24 @@
 
 #include "Pushswap.h"
 
+void	swapthem(t_linked **tmp, int d)
+{
+	int	i;
+
+	if (d == 1 && (*tmp)->value > (*tmp)->next->value)
+	{
+		i = (*tmp)->value;
+		(*tmp)->value = (*tmp)->next->value;
+		(*tmp)->next->value = i;
+	}
+	if (d == 2 && (*tmp)->value > (*tmp)->prev->value)
+	{
+		i = (*tmp)->value;
+		(*tmp)->value = (*tmp)->prev->value;
+		(*tmp)->prev->value = i;
+	}
+}
+
 static int	numstring(char const *s1, char c)
 {
 	int	num;
