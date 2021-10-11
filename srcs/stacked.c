@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Pushswap.h"
-
+/*
 void	swapthem(t_linked **tmp, int d)
 {
 	int	i;
@@ -28,7 +28,7 @@ void	swapthem(t_linked **tmp, int d)
 		(*tmp)->value = (*tmp)->prev->value;
 		(*tmp)->prev->value = i;
 	}
-}
+}*/
 
 int	sortstack( t_linked **head, t_stack *stack)
 {
