@@ -34,7 +34,7 @@ void	init(t_linked **heada, t_linked **headb, t_stack *stack)
 	stack->one = 11;
 	stack->j = 0;
 }
-
+/*
 void	checkdoublon(t_linked **head, t_stack *stack)
 {
 	int			i;
@@ -89,7 +89,7 @@ void	checkorder(t_linked **head, t_stack *stack)
 		*head = tmp2;
 	}
 	return ;
-}
+}*/
 
 int	littlenum(t_linked **heada, t_linked **sorted, t_stack *stack)
 {
@@ -147,11 +147,8 @@ int	main(int argc, char **argv)
 	heada = generatestack(argc, argv, &stack);
 	stack.size = countelem(heada);
 	checkorder(&heada, &stack);
-	checkdoublon(&heada, &stack);
 	if (stack.error > 0)
 	{
-		if (stack.error == 1)
-			ft_putstr("Error\n");
 		if (heada)
 			freelist(&heada);
 		return (0);

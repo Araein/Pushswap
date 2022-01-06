@@ -12,6 +12,63 @@
 
 #include "Pushswap.h"
 
+void	checkdoublon(t_linked **head, t_stack *stack)
+{
+	int			i;
+	t_linked	*tmp;
+	t_linked	*tmp2;
+	int			d;
+
+	tmp = *head;
+	while (tmp != NULL && stack->error != 1)
+	{	
+		i = tmp->value;
+		tmp2 = *head;
+		d = 0;
+		while (tmp2 != NULL)
+		{
+			if (tmp2->value == i)
+				d++;
+			tmp2 = tmp2->next;
+		}
+		if (d > 1)
+		{
+			ft_putstr("Error\n");
+			stack->error = 1;
+		}
+		tmp = tmp->next;
+	}
+	return ;
+}
+
+void	checkorder(t_linked **head, t_stack *stack)
+{
+	int			i;
+	int			d;
+	t_linked	*tmp;
+
+	d = 0;
+	i = 0;
+	tmp = *head;
+	if (stack->size == 0)
+		stack->error = 1;
+	else
+	{
+		while (tmp->next != NULL && stack->error != 2)
+		{	
+			i++;
+			if (tmp->value < tmp->next->value)
+				d++;
+			tmp = tmp->next;
+		}
+		if (i == d)
+			stack->error = 2;
+		else
+			checkdoublon(head, stack);
+	}
+	return ;
+}
+
 void	toptobottom(t_linked **head, int boo, t_stack *stack)
 {
 	t_linked	*tmp;
