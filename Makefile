@@ -10,7 +10,7 @@ OBJS			= ${SRCS:.c=.o}
 
 HEADER			= header
 
-CC				= gcc
+CC				= gcc 
 CFLAGS 			= -Wall -Wextra -Werror
 RM				= rm -f
 

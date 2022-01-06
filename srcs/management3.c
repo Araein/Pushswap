@@ -42,6 +42,8 @@ int	ft_isdigit(char *nb)
 	i = 0;
 	if (nb[0] == '-')
 		i++;
+	if (i == 1 && ft_strlen(nb) == 1)
+		return (0);
 	while (nb[i])
 	{
 		if (nb[i] < '0' || nb[i] > '9')
@@ -58,8 +60,8 @@ t_linked	*error(char **splited, t_linked *head)
 }
 
 void	checkerror(char **splited, int j, t_stack *stack)
-{
-	if (!(ft_isdigit(splited[j - 1])))
+{	
+	if (!(splited[0]) || !(ft_isdigit(splited[j - 1])))
 		stack->error = 1;
 	if (stack->error == 1)
 		return ;

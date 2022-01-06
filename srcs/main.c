@@ -12,51 +12,28 @@
 
 #include "Pushswap.h"
 
-/*void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char const *s)
+int	ft_strlen(char *string)
 {
 	int	i;
 
-	if (s)
-	{
-		i = 0;
-		while (s[i] != '\0')
-		{
-			ft_putchar(s[i]);
-			i++;
-		}
-	}
+	i = 0;
+	while (string[i])
+		i++;
+	return (i);
 }
 
-long long	ft_atoi(const char *str)
+void	init(t_linked **heada, t_linked **headb, t_stack *stack)
 {
-	long long	signe;
-	long long	i;
-	long long	num;
-
-	i = 0;
-	signe = 1;
-	num = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			signe *= -1;
-		i++;
-	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		num = num * 10 + (str[i] - 48);
-		i++;
-	}
-	return (num * signe);
-}*/
+	stack->value = 0;
+	stack->size = 0;
+	stack->therest = 0;
+	stack->sorted = NULL;
+	*headb = NULL;
+	*heada = NULL;
+	stack->operation = 0;
+	stack->one = 11;
+	stack->j = 0;
+}
 
 void	checkdoublon(t_linked **head, t_stack *stack)
 {
@@ -85,6 +62,35 @@ void	checkdoublon(t_linked **head, t_stack *stack)
 	return ;
 }
 
+void	checkorder(t_linked **head, t_stack *stack)
+{
+	int			i;
+	int			d;
+	t_linked	*tmp;
+	t_linked	*tmp2;
+
+	d = 0;
+	i = 0;
+	tmp = *head;
+	tmp2 = *head;
+	if (stack->size == 0)
+		stack->error = 1;
+	else
+	{
+		while (tmp->next != NULL && stack->error != 2)
+		{	
+			i++;
+			if (tmp->value < tmp->next->value)
+				d++;
+			tmp = tmp->next;
+		}
+		if (i == d)
+			stack->error = 2;
+		*head = tmp2;
+	}
+	return ;
+}
+
 int	littlenum(t_linked **heada, t_linked **sorted, t_stack *stack)
 {
 	if (stack->size <= 1)
@@ -102,19 +108,6 @@ int	littlenum(t_linked **heada, t_linked **sorted, t_stack *stack)
 		return (0);
 	}
 	return (0);
-}
-
-void	init(t_linked **heada, t_linked **headb, t_stack *stack)
-{
-	stack->value = 0;
-	stack->size = 0;
-	stack->therest = 0;
-	stack->sorted = NULL;
-	*headb = NULL;
-	*heada = NULL;
-	stack->operation = 0;
-	stack->one = 11;
-	stack->j = 0;
 }
 
 int	launchit(t_linked **ha, t_linked **hb, t_linked **sorted, t_stack *stack)
@@ -147,21 +140,23 @@ int	main(int argc, char **argv)
 	t_linked	*sorted;
 	t_stack		stack;
 
-	init(&heada, &headb, &stack);
-	if (argv[1] == NULL)
+	if (argc < 2 || argv[1] == 0)
 		return (0);
+	init(&heada, &headb, &stack);
 	stack.error = 0;
 	heada = generatestack(argc, argv, &stack);
+	stack.size = countelem(heada);
+	checkorder(&heada, &stack);
 	checkdoublon(&heada, &stack);
-	if (stack.error == 1)
+	if (stack.error > 0)
 	{
-		ft_putstr("Error");
+		if (stack.error == 1)
+			ft_putstr("Error\n");
 		if (heada)
 			freelist(&heada);
 		return (0);
 	}
 	sorted = generatestack(argc, argv, &stack);
-	stack.size = countelem(heada);
 	if (stack.size <= 2)
 		return (littlenum(&heada, &sorted, &stack));
 	else

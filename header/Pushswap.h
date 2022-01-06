@@ -47,11 +47,14 @@ typedef struct s_stack
 	t_linked	*lower;
 }				t_stack;
 
+void		init(t_linked **heada, t_linked **headb, t_stack *stack);
+void		checkorder(t_linked **head, t_stack *stack);
 void		printlist(t_linked *head);
 t_linked	*createnode(int value);
 t_linked	*generatestack(int argc, char **argv, t_stack *stack);
 t_linked	*swapfirst(t_linked **head, int boo, t_stack *stack);
 void		givenode(t_linked **head, t_linked **head2, int boo, t_stack *stk);
+int			ft_strlen(char *string);
 int			countelem(t_linked *head);
 void		toptobottom(t_linked **head, int boo, t_stack *stack);
 void		bottomtotop(t_linked **head, int boo, t_stack *stack);
@@ -75,7 +78,6 @@ void		ft_putchar(char c);
 void		ft_putstr(char const *s);
 void		checkdoublon(t_linked **head, t_stack *stack);
 int			littlenum(t_linked **heada, t_linked **sorted, t_stack *stack);
-void		init(t_linked **heada, t_linked **headb, t_stack *stack);
 int			launchit(t_linked **ha, t_linked **hb, t_linked **st, t_stack *stk);
 t_linked	*error(char **splited, t_linked *head);
 void		checkerror(char **splited, int j, t_stack *stack);
