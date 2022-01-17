@@ -55,6 +55,7 @@ int	ft_isdigit(char *nb)
 
 t_linked	*error(char **splited, t_linked *head)
 {
+	ft_putstr("Error\n");
 	freetab(splited);
 	return (head);
 }
