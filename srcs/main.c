@@ -34,62 +34,6 @@ void	init(t_linked **heada, t_linked **headb, t_stack *stack)
 	stack->one = 11;
 	stack->j = 0;
 }
-/*
-void	checkdoublon(t_linked **head, t_stack *stack)
-{
-	int			i;
-	t_linked	*tmp;
-	t_linked	*tmp2;
-	int			d;
-
-	d = 0;
-	tmp = *head;
-	while (tmp != NULL && stack->error != 1)
-	{	
-		i = tmp->value;
-		tmp2 = *head;
-		d = 0;
-		while (tmp2 != NULL)
-		{
-			if (tmp2->value == i)
-				d++;
-			tmp2 = tmp2->next;
-		}
-		if (d > 1)
-			stack->error = 1;
-		tmp = tmp->next;
-	}
-	return ;
-}
-
-void	checkorder(t_linked **head, t_stack *stack)
-{
-	int			i;
-	int			d;
-	t_linked	*tmp;
-	t_linked	*tmp2;
-
-	d = 0;
-	i = 0;
-	tmp = *head;
-	tmp2 = *head;
-	if (stack->size == 0)
-		stack->error = 1;
-	else
-	{
-		while (tmp->next != NULL && stack->error != 2)
-		{	
-			i++;
-			if (tmp->value < tmp->next->value)
-				d++;
-			tmp = tmp->next;
-		}
-		if (i == d)
-			stack->error = 2;
-		*head = tmp2;
-	}
-	return ;
-}*/
 
 int	littlenum(t_linked **heada, t_linked **sorted, t_stack *stack)
 {
